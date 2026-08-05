@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collections — Kiranza</title>
-  <meta name="description" content="Browse all Gen Z aesthetic lifestyle products at Kiranza. Filter by Y2K, Dark Academia, Coquette, Streetwear, Clean Girl, Indie/Alt, and Cottagecore.">
+  <title>Wishlist — Kiranza</title>
+  <meta name="description" content="Your saved Gen Z aesthetic picks at Kiranza.">
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/main.css">
@@ -13,7 +13,6 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
   <div class="scroll-progress" id="scroll-progress"></div>
 
   <!-- Announcement Bar -->
@@ -27,12 +26,12 @@
     <button class="announcement-close" id="announcement-close" aria-label="Close">✕</button>
   </div>
 
-  <!-- ── NAVBAR ───────────────────────────────────────────── -->
+  <!-- Navbar -->
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="collections.html" class="active">Collections</a></li>
+      <li><a href="collections.html">Collections</a></li>
       <li><a href="lookbook.html">Lookbook</a></li>
       <li><a href="about.html">About</a></li>
     </ul>
@@ -40,7 +39,7 @@
       <button class="nav-icon-btn" id="search-btn" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </button>
-      <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist" style="position:relative">
+      <a href="wishlist.html" class="nav-icon-btn active" aria-label="Wishlist" style="position:relative">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         <span class="wishlist-badge" style="display:none">0</span>
       </a>
@@ -54,62 +53,19 @@
     </div>
   </nav>
 
-  <!-- ── PAGE HERO ─────────────────────────────────────────── -->
+  <!-- Page Hero -->
   <div class="page-hero">
-    <span class="section-tag">Browse Everything</span>
-    <h1>All <span class="accent-text">Vibes.</span></h1>
-    <p>Curated picks across 7 Gen Z aesthetics — from Y2K to Cottagecore.</p>
+    <span class="section-tag">Saved Vibes</span>
+    <h1>Your <span class="accent-text">Wishlist.</span></h1>
+    <p>Everything you're eyeing, saved in one aesthetic place.</p>
   </div>
 
-  <!-- ── FILTER BAR + SORT ─────────────────────────────────── -->
-  <div class="filter-bar">
-    <div class="filter-pills">
-      <button class="filter-pill active" data-filter="all">✦ All Vibes</button>
-      <button class="filter-pill" data-filter="Y2K">💿 Y2K</button>
-      <button class="filter-pill" data-filter="Dark Academia">📚 Dark Academia</button>
-      <button class="filter-pill" data-filter="Coquette">🎀 Coquette</button>
-      <button class="filter-pill" data-filter="Indie/Alt">📌 Indie / Alt</button>
-      <button class="filter-pill" data-filter="Streetwear">🧢 Streetwear</button>
-      <button class="filter-pill" data-filter="Clean Girl">✨ Clean Girl</button>
-      <button class="filter-pill" data-filter="Cottagecore">🌿 Cottagecore</button>
-    </div>
+  <!-- Wishlist Content -->
+  <div class="wishlist-wrap">
+    <div class="wishlist-grid" id="wishlist-grid"></div>
   </div>
 
-  <!-- Product count & Sort bar -->
-  <div style="max-width:1280px; margin:0 auto; padding:24px 32px 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-    <p style="font-family:'Space Grotesk',sans-serif; font-size:0.78rem; color:var(--clr-text-muted); letter-spacing:0.08em; text-transform:uppercase;">
-      Showing <span id="product-count">16 products</span>
-    </p>
-    <div class="sort-wrap">
-      <select class="sort-select" id="sort-select" aria-label="Sort products">
-        <option value="default">Sort: Featured</option>
-        <option value="price-low">Price: Low to High</option>
-        <option value="price-high">Price: High to Low</option>
-        <option value="newest">Newest First</option>
-        <option value="trending">Trending First</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- ── PRODUCT GRID ──────────────────────────────────────── -->
-  <div class="product-grid" id="product-grid">
-    <!-- Rendered by collections.js -->
-  </div>
-
-  <!-- ── NEWSLETTER ────────────────────────────────────────── -->
-  <section class="newsletter-section">
-    <div class="newsletter-inner reveal">
-      <span class="section-tag">Join the Squad</span>
-      <h2>Get <span class="accent-text">First Access</span></h2>
-      <p>New drops, exclusive picks, and aesthetic inspo — straight to your inbox.</p>
-      <form class="newsletter-form" id="newsletter-form" novalidate>
-        <input class="newsletter-input" type="email" placeholder="your@email.com">
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ── SEARCH OVERLAY ────────────────────────────────────── -->
+  <!-- Search Overlay -->
   <div class="search-overlay" id="search-overlay">
     <button class="search-close" id="search-close" aria-label="Close search">✕</button>
     <div class="search-input-wrap">
@@ -120,7 +76,7 @@
     <div class="search-results" id="search-results"></div>
   </div>
 
-  <!-- ── CART DRAWER ───────────────────────────────────────── -->
+  <!-- Cart Drawer -->
   <div class="cart-overlay" id="cart-overlay"></div>
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-header">
@@ -130,9 +86,7 @@
       </div>
       <button class="cart-drawer-close" id="cart-drawer-close">✕</button>
     </div>
-    <div class="cart-drawer-body" id="cart-items">
-      <!-- Rendered by cart.js -->
-    </div>
+    <div class="cart-drawer-body" id="cart-items"></div>
     <div class="cart-drawer-footer">
       <div class="cart-subtotal">
         <span class="cart-subtotal-label">Subtotal</span>
@@ -143,7 +97,7 @@
     </div>
   </div>
 
-  <!-- ── MOBILE MENU ───────────────────────────────────────── -->
+  <!-- Mobile Menu -->
   <div class="menu-overlay" id="menu-overlay"></div>
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
@@ -152,9 +106,9 @@
     </div>
     <div class="mobile-nav-links">
       <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="collections.html" class="mobile-nav-link active">Collections</a>
+      <a href="collections.html" class="mobile-nav-link">Collections</a>
       <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
-      <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
+      <a href="wishlist.html" class="mobile-nav-link active">Wishlist</a>
       <a href="about.html" class="mobile-nav-link">About</a>
     </div>
     <div class="mobile-menu-footer">
@@ -167,7 +121,7 @@
     </div>
   </div>
 
-  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -210,7 +164,73 @@
   <script src="js/ui.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/search.js"></script>
-  <script src="js/collections.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('wishlist-grid');
+      if (!grid || typeof PRODUCTS === 'undefined') return;
+
+      function renderWishlist() {
+        let wishlist = [];
+        try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch(e) {}
+        const items = PRODUCTS.filter(p => wishlist.includes(p.id));
+
+        if (!items.length) {
+          grid.parentNode.innerHTML = `
+            <div class="wishlist-empty-state">
+              <div class="wishlist-empty-icon">♡</div>
+              <h2>Your wishlist is empty</h2>
+              <p>Explore our 7 curated Gen Z aesthetics and save your favorite picks.</p>
+              <a href="collections.html" class="btn btn-primary">Browse Collections</a>
+            </div>`;
+          return;
+        }
+
+        grid.innerHTML = items.map(item => `
+          <div class="product-card">
+            <a href="product.html?id=${item.id}">
+              <div class="product-card-img">
+                <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='assets/images/placeholder.jpg'">
+                ${item.badge ? `<span class="product-badge badge-${item.badge}">${item.badgeLabel}</span>` : ''}
+                <button class="wishlist-btn active" data-id="${item.id}" aria-label="Remove">♥</button>
+              </div>
+            </a>
+            <div class="product-card-body">
+              <span class="product-aesthetic-tag">${item.category}</span>
+              <a href="product.html?id=${item.id}"><h3 class="product-title">${item.name}</h3></a>
+              <div class="product-footer">
+                <div class="product-price">₹${item.price.toLocaleString('en-IN')}</div>
+                <button class="btn-add-cart" data-id="${item.id}">Add +</button>
+              </div>
+            </div>
+          </div>
+        `).join('');
+
+        grid.querySelectorAll('.btn-add-cart').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (window.addToCart) window.addToCart(+btn.dataset.id);
+          });
+        });
+
+        grid.querySelectorAll('.wishlist-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pid = +btn.dataset.id;
+            let current = [];
+            try { current = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch(err) {}
+            const idx = current.indexOf(pid);
+            if (idx > -1) current.splice(idx, 1);
+            localStorage.setItem('kiranza_wishlist', JSON.stringify(current));
+            if (window.updateWishlistCount) window.updateWishlistCount();
+            if (typeof showToast !== 'undefined') showToast('Removed from Wishlist', 'info', '♡');
+            renderWishlist();
+          });
+        });
+      }
+
+      renderWishlist();
+    });
+  </script>
 
 </body>
 </html>

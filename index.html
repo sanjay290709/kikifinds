@@ -3,30 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kiranza — Shop the Vibe</title>
-  <meta name="description" content="Kiranza curates the best Gen Z lifestyle products — Y2K, Dark Academia, Coquette, Streetwear, and more. Shop the vibe.">
-  <meta property="og:title" content="Kiranza — Shop the Vibe">
-  <meta property="og:description" content="Curated aesthetics for the culture.">
+  <title>Kiranza — Lifestyle Mix & Gen Z Aesthetics</title>
+  <meta name="description" content="Kiranza is a modern lifestyle destination for Gen Z aesthetics — Y2K, Dark Academia, Coquette, Streetwear, Clean Girl, Indie/Alt, and Cottagecore.">
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/enhancements.css">
 </head>
 <body>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar" id="announcement-bar">
+    <div class="announcement-track">
+      <span class="announcement-item">FREE SHIPPING ON ORDERS OVER ₹999<span class="announcement-sep">✦</span></span>
+      <span class="announcement-item">NEW DROPS EVERY FRIDAY<span class="announcement-sep">✦</span></span>
+      <span class="announcement-item">USE CODE 'GENZ' FOR 10% OFF<span class="announcement-sep">✦</span></span>
+      <span class="announcement-item">FREE SHIPPING ON ORDERS OVER ₹999<span class="announcement-sep">✦</span></span>
+    </div>
+    <button class="announcement-close" id="announcement-close" aria-label="Close">✕</button>
+  </div>
 
   <!-- ── NAVBAR ───────────────────────────────────────────── -->
   <nav class="navbar" id="navbar">
     <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
       <li><a href="lookbook.html">Lookbook</a></li>
+      <li><a href="about.html">About</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="nav-icon-btn" id="search-btn" aria-label="Search" title="Search">
+      <button class="nav-icon-btn" id="search-btn" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </button>
-      <button class="nav-icon-btn" id="cart-btn" aria-label="Cart" title="Cart">
+      <a href="wishlist.html" class="nav-icon-btn" aria-label="Wishlist" style="position:relative">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="wishlist-badge" style="display:none">0</span>
+      </a>
+      <button class="nav-icon-btn" id="cart-btn" aria-label="Cart" style="position:relative">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
         <span class="cart-badge" style="display:none">0</span>
       </button>
@@ -36,59 +54,50 @@
     </div>
   </nav>
 
-  <!-- ── HERO ─────────────────────────────────────────────── -->
-  <section class="hero" id="hero">
-    <div class="hero-blob hero-blob-1"></div>
-    <div class="hero-blob hero-blob-2"></div>
-
-    <div class="hero-content">
-      <span class="hero-tag">New Collection 2025</span>
-      <h1 class="hero-title">
-        Curate Your
-        <span class="line-accent">Aesthetic.</span>
-      </h1>
-      <p class="hero-sub">
-        Lifestyle products for every Gen Z era — Y2K, Dark Academia, Coquette, and beyond.
-      </p>
-      <div class="hero-cta">
-        <a href="collections.html" class="btn btn-primary btn-icon-end">Explore Now</a>
-        <a href="lookbook.html" class="btn btn-outline">View Lookbook</a>
+  <!-- ── HERO SECTION ─────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-bg-blob-1"></div>
+    <div class="hero-bg-blob-2"></div>
+    <div class="hero-inner">
+      <div class="hero-content reveal">
+        <span class="section-tag">Editorial Drop 2025</span>
+        <h1 class="hero-title">
+          Curated<br>
+          <span class="accent-text">Aesthetics</span><br>
+          <em>Un-Filtered.</em>
+        </h1>
+        <p class="hero-subtitle">
+          Your main character era starts here. Lifestyle products, fashion pieces, and objects strictly curated for your vibe.
+        </p>
+        <div class="hero-cta-group">
+          <a href="collections.html" class="btn btn-primary btn-lg btn-icon-end">Explore Collections</a>
+          <a href="lookbook.html" class="btn btn-outline btn-lg">View Lookbook</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal reveal-d2">
+        <div class="hero-img-frame">
+          <img src="assets/images/hero.jpg" alt="Kiranza Aesthetic Editorial">
+        </div>
+        <div class="floating-tag tag-y2k">💿 Y2K Revival</div>
+        <div class="floating-tag tag-da">📚 Dark Academia</div>
+        <div class="floating-tag tag-coquette">🎀 Coquette</div>
       </div>
     </div>
-
-    <div class="hero-visual">
-      <img src="assets/images/hero.jpg" alt="Kiranza Gen Z Aesthetic Collection">
-
-      <div class="hero-float-tag hero-float-1">
-        <span class="dot"></span>
-        New drops daily
-      </div>
-      <div class="hero-float-tag hero-float-2">
-        ✦ 7 Aesthetics
-      </div>
-    </div>
-
-    <div class="hero-scroll-hint">Scroll to explore</div>
   </section>
 
   <!-- ── MARQUEE TICKER ────────────────────────────────────── -->
   <div class="marquee-wrapper" aria-hidden="true">
     <div class="marquee-track">
-      <span class="marquee-item">NEW DROP<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Y2K VIBES<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Y2K REVIVAL<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">DARK ACADEMIA<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">COQUETTE ERA<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">AESTHETIC PICKS<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">COQUETTE CORE<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">STREETWEAR<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">CLEAN GIRL<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">COTTAGECORE<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">INDIE / ALT<span class="marquee-sep">✦</span></span>
-      <!-- Duplicate for seamless loop -->
-      <span class="marquee-item">NEW DROP<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">Y2K VIBES<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Y2K REVIVAL<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">DARK ACADEMIA<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">COQUETTE ERA<span class="marquee-sep">✦</span></span>
-      <span class="marquee-item">AESTHETIC PICKS<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">COQUETTE CORE<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">STREETWEAR<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">CLEAN GIRL<span class="marquee-sep">✦</span></span>
       <span class="marquee-item">COTTAGECORE<span class="marquee-sep">✦</span></span>
@@ -98,109 +107,94 @@
 
   <!-- ── COLLECTIONS GRID ──────────────────────────────────── -->
   <section class="collections-section" id="collections">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-tag">Explore</span>
-        <h2>Aesthetic <span class="accent-text">Universes</span></h2>
+    <div class="section-header reveal">
+      <div>
+        <span class="section-tag">Pick Your Vibe</span>
+        <h2>Shop By <span class="accent-text">Aesthetic</span></h2>
       </div>
+      <a href="collections.html" class="btn btn-ghost btn-icon-end">View All (7)</a>
     </div>
-    <div class="collections-grid">
-      <div class="col-card large reveal reveal-d1">
-        <img src="assets/images/cat-y2k.jpg" alt="Y2K Aesthetic Collection">
-        <div class="col-card-overlay">
-          <span class="col-card-tag">Y2K</span>
+    <div class="col-grid">
+      <a href="collections.html?filter=Y2K" class="col-card col-large reveal-left">
+        <img src="assets/images/cat-y2k.jpg" alt="Y2K Aesthetic">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <span class="col-card-tag">💿 Holographic & Butterfly Clips</span>
           <h3>Y2K Revival</h3>
-          <a href="collections.html?filter=Y2K" class="col-card-btn">Shop Now →</a>
+          <p>Iridescent, nostalgic, un-apologetically extra.</p>
         </div>
-      </div>
-      <div class="col-card reveal reveal-d2">
-        <img src="assets/images/cat-dark-academia.jpg" alt="Dark Academia Collection">
-        <div class="col-card-overlay">
-          <span class="col-card-tag">Dark Academia</span>
+      </a>
+      <a href="collections.html?filter=Dark+Academia" class="col-card reveal">
+        <img src="assets/images/cat-dark-academia.jpg" alt="Dark Academia Aesthetic">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <span class="col-card-tag">📚 Leather & Amber Candles</span>
           <h3>Dark Academia</h3>
-          <a href="collections.html?filter=Dark+Academia" class="col-card-btn">Shop Now →</a>
+          <p>Eternal autumn vibes & study rituals.</p>
         </div>
-      </div>
-      <div class="col-card reveal reveal-d3">
-        <img src="assets/images/cat-coquette.jpg" alt="Coquette Collection">
-        <div class="col-card-overlay">
-          <span class="col-card-tag">Coquette</span>
+      </a>
+      <a href="collections.html?filter=Coquette" class="col-card reveal reveal-d1">
+        <img src="assets/images/cat-coquette.jpg" alt="Coquette Aesthetic">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <span class="col-card-tag">🎀 Satin Bows & Pearls</span>
           <h3>Coquette Core</h3>
-          <a href="collections.html?filter=Coquette" class="col-card-btn">Shop Now →</a>
+          <p>Soft, dreamy, romantic elegance.</p>
         </div>
-      </div>
-      <div class="col-card large reveal reveal-d2" style="grid-row: 1 / span 1">
-        <img src="assets/images/cat-streetwear.jpg" alt="Streetwear Collection">
-        <div class="col-card-overlay">
-          <span class="col-card-tag">Streetwear</span>
+      </a>
+      <a href="collections.html?filter=Streetwear" class="col-card col-wide reveal-scale">
+        <img src="assets/images/cat-streetwear.jpg" alt="Streetwear Aesthetic">
+        <div class="col-card-overlay"></div>
+        <div class="col-card-content">
+          <span class="col-card-tag">🧢 Heavyweight Fleece & Caps</span>
           <h3>Streetwear</h3>
-          <a href="collections.html?filter=Streetwear" class="col-card-btn">Shop Now →</a>
+          <p>Urban staples built for the everyday grind.</p>
         </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── NEW IN SECTION ───────────────────────────────────── -->
+  <section class="new-in-section">
+    <div class="new-in-header reveal">
+      <div>
+        <span class="section-tag">Fresh Off The Press</span>
+        <h2>Just <span class="accent-text">Dropped</span></h2>
+      </div>
+      <a href="collections.html?sort=newest" class="btn btn-ghost btn-icon-end">Shop New In</a>
+    </div>
+    <div class="trending-scroll-wrap">
+      <div class="trending-scroll" id="new-in-grid">
+        <!-- Rendered dynamically by main.js -->
       </div>
     </div>
   </section>
 
-  <!-- ── TRENDING NOW ──────────────────────────────────────── -->
+  <!-- ── TRENDING STRIP ────────────────────────────────────── -->
   <section class="trending-section" id="trending">
     <div class="trending-header">
       <div class="reveal">
-        <span class="section-tag">Hot Right Now</span>
+        <span class="section-tag">Vibe Check</span>
         <h2>Trending <span class="accent-text">Picks</span></h2>
       </div>
-      <a href="collections.html" class="btn btn-ghost btn-icon-end reveal reveal-d2">See All</a>
+      <a href="collections.html" class="btn btn-ghost btn-icon-end reveal reveal-d2">See All Products</a>
     </div>
     <div class="trending-scroll-wrap">
       <div class="trending-scroll" id="trending-scroll">
-        <!-- Rendered by main.js -->
+        <!-- Rendered dynamically by main.js -->
       </div>
     </div>
   </section>
 
-  <!-- ── AESTHETICS PILLS ──────────────────────────────────── -->
-  <section class="aesthetics-section section-pad">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-tag">Browse by Vibe</span>
-        <h2>What's Your <span class="accent-text">Aesthetic?</span></h2>
-      </div>
-    </div>
-    <div class="aesthetics-pills">
-      <a href="collections.html?filter=Y2K" class="aesthetic-pill reveal reveal-d1">
-        <span class="pill-emoji">💿</span> Y2K
-      </a>
-      <a href="collections.html?filter=Dark+Academia" class="aesthetic-pill reveal reveal-d2">
-        <span class="pill-emoji">📚</span> Dark Academia
-      </a>
-      <a href="collections.html?filter=Coquette" class="aesthetic-pill reveal reveal-d3">
-        <span class="pill-emoji">🎀</span> Coquette
-      </a>
-      <a href="collections.html?filter=Indie/Alt" class="aesthetic-pill reveal reveal-d4">
-        <span class="pill-emoji">📌</span> Indie / Alt
-      </a>
-      <a href="collections.html?filter=Streetwear" class="aesthetic-pill reveal reveal-d1">
-        <span class="pill-emoji">🧢</span> Streetwear
-      </a>
-      <a href="collections.html?filter=Clean+Girl" class="aesthetic-pill reveal reveal-d2">
-        <span class="pill-emoji">✨</span> Clean Girl
-      </a>
-      <a href="collections.html?filter=Cottagecore" class="aesthetic-pill reveal reveal-d3">
-        <span class="pill-emoji">🌿</span> Cottagecore
-      </a>
-    </div>
-  </section>
-
-  <!-- ── BRAND STATEMENT ───────────────────────────────────── -->
+  <!-- ── STATEMENT SECTION ─────────────────────────────────── -->
   <section class="statement-section">
     <div class="statement-inner reveal">
       <p class="statement-text">
-        <span class="accent-text">Kiranza</span> is<br>
-        more than a store.<br>
-        It's a <em>feeling</em>.
+        "Not just products.<br>
+        A whole <span class="accent-text">aesthetic</span> ecosystem."
       </p>
-      <p class="statement-sub">
-        Built for the aesthetically obsessed. Every product, a vibe check.
-      </p>
-      <a href="collections.html" class="btn btn-outline">Browse All Vibes</a>
+      <p class="statement-sub">Every product passes a strict vibe check before hitting the drop.</p>
+      <a href="lookbook.html" class="btn btn-primary btn-lg btn-icon-end">Explore Editorial Lookbook</a>
     </div>
   </section>
 
@@ -211,12 +205,69 @@
       <h2>Get <span class="accent-text">First Access</span></h2>
       <p>New drops, exclusive picks, and aesthetic inspo — straight to your inbox.</p>
       <form class="newsletter-form" id="newsletter-form" novalidate>
-        <input class="newsletter-input" type="email" id="email-input"
-               placeholder="your@email.com" autocomplete="email">
+        <input class="newsletter-input" type="email" placeholder="your@email.com">
         <button type="submit" class="btn btn-primary">Subscribe</button>
       </form>
     </div>
   </section>
+
+  <!-- ── SEARCH OVERLAY ────────────────────────────────────── -->
+  <div class="search-overlay" id="search-overlay">
+    <button class="search-close" id="search-close" aria-label="Close search">✕</button>
+    <div class="search-input-wrap">
+      <input type="text" class="search-input" id="search-input" placeholder="Search aesthetics, products, tags…">
+      <span class="search-icon">🔍</span>
+    </div>
+    <div class="search-hint" id="search-hint">Popular picks</div>
+    <div class="search-results" id="search-results"></div>
+  </div>
+
+  <!-- ── CART DRAWER ───────────────────────────────────────── -->
+  <div class="cart-overlay" id="cart-overlay"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <div>
+        <span class="cart-drawer-title">Your Cart</span>
+        <span class="cart-drawer-count">0</span>
+      </div>
+      <button class="cart-drawer-close" id="cart-drawer-close">✕</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-items">
+      <!-- Rendered by cart.js -->
+    </div>
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal">
+        <span class="cart-subtotal-label">Subtotal</span>
+        <span class="cart-total-amount" id="cart-total">₹0</span>
+      </div>
+      <p class="cart-note">Taxes & shipping calculated at checkout.</p>
+      <button class="btn btn-primary cart-checkout" id="cart-checkout-btn">Proceed to Checkout →</button>
+    </div>
+  </div>
+
+  <!-- ── MOBILE MENU ───────────────────────────────────────── -->
+  <div class="menu-overlay" id="menu-overlay"></div>
+  <div class="mobile-menu" id="mobile-menu">
+    <div class="mobile-menu-header">
+      <span class="mobile-menu-logo">KIRANZA</span>
+      <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
+    </div>
+    <div class="mobile-nav-links">
+      <a href="index.html" class="mobile-nav-link active">Home</a>
+      <a href="collections.html" class="mobile-nav-link">Collections</a>
+      <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
+      <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
+      <a href="about.html" class="mobile-nav-link">About</a>
+    </div>
+    <div class="mobile-menu-footer">
+      <span class="mobile-footer-label">Follow the vibe</span>
+      <div class="mobile-socials">
+        <a href="#" class="mobile-social">TikTok</a>
+        <a href="#" class="mobile-social">Instagram</a>
+        <a href="#" class="mobile-social">Pinterest</a>
+      </div>
+    </div>
+  </div>
 
   <!-- ── FOOTER ────────────────────────────────────────────── -->
   <footer class="footer">
@@ -238,7 +289,7 @@
       <div class="footer-col">
         <h4>Info</h4>
         <ul>
-          <li><a href="#">About</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="#">Shipping</a></li>
           <li><a href="#">Returns</a></li>
           <li><a href="#">Contact</a></li>
@@ -261,6 +312,9 @@
 
   <script src="data/products.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/search.js"></script>
 
 </body>
 </html>

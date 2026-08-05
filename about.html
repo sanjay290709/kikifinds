@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Collections — Kiranza</title>
-  <meta name="description" content="Browse all Gen Z aesthetic lifestyle products at Kiranza. Filter by Y2K, Dark Academia, Coquette, Streetwear, Clean Girl, Indie/Alt, and Cottagecore.">
+  <title>About — Kiranza</title>
+  <meta name="description" content="The story, mission, and aesthetic values behind Kiranza.">
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/main.css">
@@ -13,7 +13,6 @@
 </head>
 <body>
 
-  <!-- Scroll progress bar -->
   <div class="scroll-progress" id="scroll-progress"></div>
 
   <!-- Announcement Bar -->
@@ -27,14 +26,14 @@
     <button class="announcement-close" id="announcement-close" aria-label="Close">✕</button>
   </div>
 
-  <!-- ── NAVBAR ───────────────────────────────────────────── -->
+  <!-- Navbar -->
   <nav class="navbar scrolled" id="navbar">
     <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="collections.html" class="active">Collections</a></li>
+      <li><a href="collections.html">Collections</a></li>
       <li><a href="lookbook.html">Lookbook</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" class="active">About</a></li>
     </ul>
     <div class="nav-actions">
       <button class="nav-icon-btn" id="search-btn" aria-label="Search">
@@ -54,62 +53,105 @@
     </div>
   </nav>
 
-  <!-- ── PAGE HERO ─────────────────────────────────────────── -->
-  <div class="page-hero">
-    <span class="section-tag">Browse Everything</span>
-    <h1>All <span class="accent-text">Vibes.</span></h1>
-    <p>Curated picks across 7 Gen Z aesthetics — from Y2K to Cottagecore.</p>
-  </div>
-
-  <!-- ── FILTER BAR + SORT ─────────────────────────────────── -->
-  <div class="filter-bar">
-    <div class="filter-pills">
-      <button class="filter-pill active" data-filter="all">✦ All Vibes</button>
-      <button class="filter-pill" data-filter="Y2K">💿 Y2K</button>
-      <button class="filter-pill" data-filter="Dark Academia">📚 Dark Academia</button>
-      <button class="filter-pill" data-filter="Coquette">🎀 Coquette</button>
-      <button class="filter-pill" data-filter="Indie/Alt">📌 Indie / Alt</button>
-      <button class="filter-pill" data-filter="Streetwear">🧢 Streetwear</button>
-      <button class="filter-pill" data-filter="Clean Girl">✨ Clean Girl</button>
-      <button class="filter-pill" data-filter="Cottagecore">🌿 Cottagecore</button>
-    </div>
-  </div>
-
-  <!-- Product count & Sort bar -->
-  <div style="max-width:1280px; margin:0 auto; padding:24px 32px 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-    <p style="font-family:'Space Grotesk',sans-serif; font-size:0.78rem; color:var(--clr-text-muted); letter-spacing:0.08em; text-transform:uppercase;">
-      Showing <span id="product-count">16 products</span>
-    </p>
-    <div class="sort-wrap">
-      <select class="sort-select" id="sort-select" aria-label="Sort products">
-        <option value="default">Sort: Featured</option>
-        <option value="price-low">Price: Low to High</option>
-        <option value="price-high">Price: High to Low</option>
-        <option value="newest">Newest First</option>
-        <option value="trending">Trending First</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- ── PRODUCT GRID ──────────────────────────────────────── -->
-  <div class="product-grid" id="product-grid">
-    <!-- Rendered by collections.js -->
-  </div>
-
-  <!-- ── NEWSLETTER ────────────────────────────────────────── -->
-  <section class="newsletter-section">
-    <div class="newsletter-inner reveal">
-      <span class="section-tag">Join the Squad</span>
-      <h2>Get <span class="accent-text">First Access</span></h2>
-      <p>New drops, exclusive picks, and aesthetic inspo — straight to your inbox.</p>
-      <form class="newsletter-form" id="newsletter-form" novalidate>
-        <input class="newsletter-input" type="email" placeholder="your@email.com">
-        <button type="submit" class="btn btn-primary">Subscribe</button>
-      </form>
+  <!-- About Hero -->
+  <section class="about-hero">
+    <div class="about-bg-blob-1"></div>
+    <div class="about-bg-blob-2"></div>
+    <div class="about-hero-content reveal">
+      <span class="section-tag">Our Story</span>
+      <h1>Curated for the <span class="accent-text">Aesthetically</span> Obsessed.</h1>
+      <p>Kiranza was built on a simple premise: style shouldn't be generic. Every piece we curate passes a strict vibe check.</p>
     </div>
   </section>
 
-  <!-- ── SEARCH OVERLAY ────────────────────────────────────── -->
+  <!-- Marquee -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Y2K<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">DARK ACADEMIA<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">COQUETTE<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">STREETWEAR<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">CLEAN GIRL<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">COTTAGECORE<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">INDIE / ALT<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">Y2K<span class="marquee-sep">✦</span></span>
+    </div>
+  </div>
+
+  <!-- Story Section -->
+  <section class="about-story">
+    <div class="about-story-img reveal-scale">
+      <img src="assets/images/hero.jpg" alt="Kiranza Aesthetic">
+    </div>
+    <div class="about-story-text reveal">
+      <span class="section-tag">Why We Exist</span>
+      <h2>A Lifestyle Mix <span class="accent-text">Un-categorized</span></h2>
+      <p>We don't believe in sticking to one aesthetic forever. On Monday you might be full Dark Academia with a leather journal and espresso; on Friday you're Y2K iridescent butterfly clips and platform kicks.</p>
+      <p>Kiranza is your moodboard brought to real life — lifestyle accessories, fashion, homeware, and stationery chosen strictly for their aesthetic output.</p>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="about-values">
+    <div class="section-header center reveal">
+      <span class="section-tag">Pillars</span>
+      <h2>Our <span class="accent-text">Standards</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal">
+        <span class="value-icon">👁️</span>
+        <h3 class="value-name">Vibe Checked</h3>
+        <p class="value-desc">Only items that fit authentic Gen Z subcultures make the catalog.</p>
+      </div>
+      <div class="value-card reveal reveal-d1">
+        <span class="value-icon">⚡</span>
+        <h3 class="value-name">Fast Drops</h3>
+        <p class="value-desc">Micro-batches so you get unique pieces before trends go mainstream.</p>
+      </div>
+      <div class="value-card reveal reveal-d2">
+        <span class="value-icon">💎</span>
+        <h3 class="value-name">Honest Quality</h3>
+        <p class="value-desc">No cheap flimsy junk. Everything feels as good as it looks.</p>
+      </div>
+      <div class="value-card reveal reveal-d3">
+        <span class="value-icon">✦</span>
+        <h3 class="value-name">Self Expression</h3>
+        <p class="value-desc">Wear your mood. Mix aesthetics. Rules are meant to be broken.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aesthetic Grid -->
+  <section class="about-aesthetics">
+    <div class="section-header reveal">
+      <span class="section-tag">Explore Vibes</span>
+      <h2>Find Your <span class="accent-text">Aesthetic</span></h2>
+    </div>
+    <div class="aesthetics-grid-about">
+      <a href="collections.html?filter=Y2K" class="aesthetic-card-about reveal">
+        <span class="aesthetic-emoji">💿</span>
+        <h3 class="aesthetic-name-label">Y2K</h3>
+        <p class="aesthetic-desc-short">Holographic, butterfly clips, platforms & nostalgia.</p>
+      </a>
+      <a href="collections.html?filter=Dark+Academia" class="aesthetic-card-about reveal reveal-d1">
+        <span class="aesthetic-emoji">📚</span>
+        <h3 class="aesthetic-name-label">Dark Academia</h3>
+        <p class="aesthetic-desc-short">Leather journals, candles, tortoiseshell & autumn vibes.</p>
+      </a>
+      <a href="collections.html?filter=Coquette" class="aesthetic-card-about reveal reveal-d2">
+        <span class="aesthetic-emoji">🎀</span>
+        <h3 class="aesthetic-name-label">Coquette</h3>
+        <p class="aesthetic-desc-short">Satin bows, pearl clips, blush pinks & dreamy energy.</p>
+      </a>
+      <a href="collections.html?filter=Streetwear" class="aesthetic-card-about reveal reveal-d3">
+        <span class="aesthetic-emoji">🧢</span>
+        <h3 class="aesthetic-name-label">Streetwear</h3>
+        <p class="aesthetic-desc-short">Heavyweight fleece, structured caps & raw urban cuts.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- Search Overlay -->
   <div class="search-overlay" id="search-overlay">
     <button class="search-close" id="search-close" aria-label="Close search">✕</button>
     <div class="search-input-wrap">
@@ -120,7 +162,7 @@
     <div class="search-results" id="search-results"></div>
   </div>
 
-  <!-- ── CART DRAWER ───────────────────────────────────────── -->
+  <!-- Cart Drawer -->
   <div class="cart-overlay" id="cart-overlay"></div>
   <div class="cart-drawer" id="cart-drawer">
     <div class="cart-drawer-header">
@@ -130,9 +172,7 @@
       </div>
       <button class="cart-drawer-close" id="cart-drawer-close">✕</button>
     </div>
-    <div class="cart-drawer-body" id="cart-items">
-      <!-- Rendered by cart.js -->
-    </div>
+    <div class="cart-drawer-body" id="cart-items"></div>
     <div class="cart-drawer-footer">
       <div class="cart-subtotal">
         <span class="cart-subtotal-label">Subtotal</span>
@@ -143,7 +183,7 @@
     </div>
   </div>
 
-  <!-- ── MOBILE MENU ───────────────────────────────────────── -->
+  <!-- Mobile Menu -->
   <div class="menu-overlay" id="menu-overlay"></div>
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
@@ -152,10 +192,10 @@
     </div>
     <div class="mobile-nav-links">
       <a href="index.html" class="mobile-nav-link">Home</a>
-      <a href="collections.html" class="mobile-nav-link active">Collections</a>
+      <a href="collections.html" class="mobile-nav-link">Collections</a>
       <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
       <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
-      <a href="about.html" class="mobile-nav-link">About</a>
+      <a href="about.html" class="mobile-nav-link active">About</a>
     </div>
     <div class="mobile-menu-footer">
       <span class="mobile-footer-label">Follow the vibe</span>
@@ -167,7 +207,7 @@
     </div>
   </div>
 
-  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -210,7 +250,6 @@
   <script src="js/ui.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/search.js"></script>
-  <script src="js/collections.js"></script>
 
 </body>
 </html>
