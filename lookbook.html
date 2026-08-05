@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lookbook — Kiranza</title>
+  <meta name="description" content="Kiranza Lookbook — editorial moodboards and curated aesthetic looks for every Gen Z vibe.">
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ───────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="lookbook.html" class="active">Lookbook</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav-icon-btn" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </button>
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── LOOKBOOK HERO ─────────────────────────────────────── -->
+  <section class="lookbook-hero">
+    <img src="assets/images/lookbook/lb-hero.jpg" alt="Kiranza Lookbook">
+    <div class="lookbook-hero-overlay"></div>
+    <div class="lookbook-hero-content">
+      <span class="section-tag" style="margin-bottom:20px; display:block">Editorial</span>
+      <h1>
+        Style the
+        <span class="accent-text"><em>Vibe.</em></span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ───────────────────────────────────────────── -->
+  <div class="marquee-wrapper" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">LOOKBOOK 2025<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">CURATE YOUR AESTHETIC<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">STYLE THE VIBE<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EDITORIAL PICKS<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">LOOKBOOK 2025<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">CURATE YOUR AESTHETIC<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">STYLE THE VIBE<span class="marquee-sep">✦</span></span>
+      <span class="marquee-item">EDITORIAL PICKS<span class="marquee-sep">✦</span></span>
+    </div>
+  </div>
+
+  <!-- ── FEATURE 1: Y2K REVIVAL ────────────────────────────── -->
+  <section class="lookbook-feature">
+    <div class="lookbook-feature-img reveal-scale">
+      <img src="assets/images/lookbook/lb1.jpg" alt="Y2K Revival">
+    </div>
+    <div class="lookbook-feature-content reveal">
+      <span class="section-tag">The 2000s are back</span>
+      <h2>Y2K <span class="accent-text">Revival</span></h2>
+      <p>
+        Butterfly clips, mini bags, platform kicks.
+        Everything iridescent, everything extra.
+        The Y2K dream, curated for 2025.
+      </p>
+      <a href="collections.html?filter=Y2K" class="btn btn-primary btn-icon-end">Shop Y2K</a>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL GRID ────────────────────────────────────── -->
+  <div class="lookbook-editorial" style="margin-top:4px;">
+    <div class="lookbook-split">
+      <div class="lookbook-tile reveal-left">
+        <img src="assets/images/lookbook/lb2.jpg" alt="Dark Academia">
+        <div class="lookbook-tile-overlay">
+          <h3>Dark Academia</h3>
+          <p>Leather journals & candlelight</p>
+        </div>
+      </div>
+      <div class="lookbook-tile reveal">
+        <img src="assets/images/lookbook/lb3.jpg" alt="Coquette Core">
+        <div class="lookbook-tile-overlay">
+          <h3>Coquette Core</h3>
+          <p>Satin bows & dreamy pastels</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FEATURE 2: DARK ACADEMIA ──────────────────────────── -->
+  <section class="lookbook-feature" style="margin-top:4px;">
+    <div class="lookbook-feature-content reveal" style="order:1">
+      <span class="section-tag">Autumn, always</span>
+      <h2>Dark <span class="accent-text">Academia</span></h2>
+      <p>
+        Leather journals, amber candlelight, tortoiseshell frames.
+        The aesthetic of studying beautifully and living in a perpetual autumn.
+      </p>
+      <a href="collections.html?filter=Dark+Academia" class="btn btn-primary btn-icon-end">Shop Dark Academia</a>
+    </div>
+    <div class="lookbook-feature-img reveal-scale" style="order:2">
+      <img src="assets/images/lookbook/lb4.jpg" alt="Dark Academia">
+    </div>
+  </section>
+
+  <!-- ── FULL BLEED: COQUETTE ──────────────────────────────── -->
+  <section style="position:relative; height:70vh; overflow:hidden; margin-top:4px;">
+    <img src="assets/images/lookbook/lb3.jpg" alt="Coquette" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(8,8,8,0.8) 40%, transparent 100%);"></div>
+    <div style="position:absolute;inset:0;display:flex;align-items:center;padding:80px;max-width:700px;">
+      <div class="reveal">
+        <span class="section-tag" style="margin-bottom:16px;display:block;">Soft & dreamy</span>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px;">
+          Coquette <span class="accent-text">Core</span>
+        </h2>
+        <p style="color:var(--clr-text-muted);max-width:400px;margin-bottom:40px;line-height:1.7;">
+          Satin bows, pearl clips, blush everything.
+          Be impossibly feminine and completely yourself.
+        </p>
+        <a href="collections.html?filter=Coquette" class="btn btn-primary btn-icon-end">Shop Coquette</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDITORIAL TRIO ─────────────────────────────────────── -->
+  <div class="lookbook-editorial" style="margin-top:4px;">
+    <div class="lookbook-trio">
+      <div class="lookbook-tile reveal-left">
+        <img src="assets/images/lookbook/lb1.jpg" alt="Streetwear">
+        <div class="lookbook-tile-overlay">
+          <h3>Streetwear</h3>
+          <p>Urban, bold, raw</p>
+        </div>
+      </div>
+      <div class="lookbook-tile reveal">
+        <img src="assets/images/lookbook/lb2.jpg" alt="Clean Girl">
+        <div class="lookbook-tile-overlay">
+          <h3>Clean Girl</h3>
+          <p>Minimal, effortless</p>
+        </div>
+      </div>
+      <div class="lookbook-tile reveal reveal-d2">
+        <img src="assets/images/lookbook/lb4.jpg" alt="Cottagecore">
+        <div class="lookbook-tile-overlay">
+          <h3>Cottagecore</h3>
+          <p>Wildflowers & warmth</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SHOP CTA ───────────────────────────────────────────── -->
+  <section class="statement-section" style="padding:120px 32px;">
+    <div class="statement-inner reveal">
+      <p class="statement-text">
+        Find your <span class="accent-text">aesthetic</span><br>
+        and <em>own it.</em>
+      </p>
+      <p class="statement-sub">Browse all 16 curated picks across 7 Gen Z aesthetics.</p>
+      <a href="collections.html" class="btn btn-primary btn-lg btn-icon-end">Shop All Vibes</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">KIRANZA</span>
+        <p>Curated aesthetics for the culture. Every product, a vibe check.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="collections.html">All Products</a></li>
+          <li><a href="collections.html?filter=Y2K">Y2K</a></li>
+          <li><a href="collections.html?filter=Dark+Academia">Dark Academia</a></li>
+          <li><a href="lookbook.html">Lookbook</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow the Vibe</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon">TikTok</a>
+          <a href="#" class="social-icon">Instagram</a>
+          <a href="#" class="social-icon">Pinterest</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kiranza. Made with ✦ for the aesthetically obsessed.</p>
+      <p>Privacy · Terms</p>
+    </div>
+  </footer>
+
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

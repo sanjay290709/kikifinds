@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product — Kiranza</title>
+  <meta name="description" content="Shop aesthetic lifestyle products at Kiranza — curated Gen Z picks.">
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+  <!-- ── NAVBAR ───────────────────────────────────────────── -->
+  <nav class="navbar scrolled" id="navbar">
+    <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="lookbook.html">Lookbook</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <button class="nav-icon-btn" aria-label="Cart">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      </button>
+      <button class="nav-hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Breadcrumb -->
+  <div style="max-width:1280px; margin:0 auto; padding:96px 32px 0;">
+    <nav style="font-family:'Space Grotesk',sans-serif; font-size:0.75rem; color:var(--clr-text-muted); letter-spacing:0.08em;">
+      <a href="index.html" style="transition:color .2s" onmouseover="this.style.color='var(--clr-accent-1)'" onmouseout="this.style.color='var(--clr-text-muted)'">Home</a>
+      <span style="margin:0 10px; color:var(--clr-text-faint)">→</span>
+      <a href="collections.html" style="transition:color .2s" onmouseover="this.style.color='var(--clr-accent-1)'" onmouseout="this.style.color='var(--clr-text-muted)'">Collections</a>
+      <span style="margin:0 10px; color:var(--clr-text-faint)">→</span>
+      <span id="product-detail-aesthetic" style="color:var(--clr-accent-2)">Product</span>
+    </nav>
+  </div>
+
+  <!-- ── PRODUCT DETAIL ────────────────────────────────────── -->
+  <div id="product-detail-wrap">
+    <div class="product-detail">
+
+      <!-- Gallery -->
+      <div class="product-gallery reveal-left">
+        <div class="gallery-main" id="gallery-main">
+          <img id="gallery-main-img" src="assets/images/placeholder.jpg" alt="Product">
+        </div>
+        <div class="gallery-thumbs" id="gallery-thumbs"></div>
+      </div>
+
+      <!-- Info Panel -->
+      <div class="product-info reveal reveal-d2">
+        <div id="product-detail-badge"></div>
+        <span class="product-aesthetic" id="product-detail-aesthetic">—</span>
+        <h1 id="product-detail-name">Loading…</h1>
+        <div class="product-info-price">
+          <span id="product-detail-price">—</span>
+        </div>
+        <p class="product-info-description" id="product-detail-description">—</p>
+
+        <div class="product-tags" id="product-detail-tags"></div>
+
+        <div class="product-actions">
+          <button class="btn btn-primary" id="detail-cart-btn">Add to Cart</button>
+          <button class="btn btn-outline" id="detail-wishlist-btn">♡ Wishlist</button>
+        </div>
+
+        <!-- Perks -->
+        <div class="product-perks">
+          <div class="product-perk">
+            <div class="product-perk-icon">🚚</div>
+            <span>Free delivery over ₹999</span>
+          </div>
+          <div class="product-perk">
+            <div class="product-perk-icon">↩️</div>
+            <span>No-questions returns</span>
+          </div>
+          <div class="product-perk">
+            <div class="product-perk-icon">🔒</div>
+            <span>Secure checkout</span>
+          </div>
+          <div class="product-perk">
+            <div class="product-perk-icon">✦</div>
+            <span>Aesthetically vetted</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── COMPLETE THE VIBE ──────────────────────────────────── -->
+  <section class="related-section" id="related">
+    <div class="trending-header">
+      <div class="reveal">
+        <span class="section-tag">Complete the Look</span>
+        <h2>More From This <span class="accent-text">Vibe</span></h2>
+      </div>
+      <a href="collections.html" class="btn btn-ghost btn-icon-end reveal reveal-d2">See All</a>
+    </div>
+    <div class="trending-scroll-wrap">
+      <div class="trending-scroll" id="related-scroll">
+        <!-- Rendered by product.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">KIRANZA</span>
+        <p>Curated aesthetics for the culture. Every product, a vibe check.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="collections.html">All Products</a></li>
+          <li><a href="collections.html?filter=Y2K">Y2K</a></li>
+          <li><a href="collections.html?filter=Dark+Academia">Dark Academia</a></li>
+          <li><a href="lookbook.html">Lookbook</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Follow the Vibe</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon">TikTok</a>
+          <a href="#" class="social-icon">Instagram</a>
+          <a href="#" class="social-icon">Pinterest</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Kiranza. Made with ✦ for the aesthetically obsessed.</p>
+      <p>Privacy · Terms</p>
+    </div>
+  </footer>
+
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/product.js"></script>
+
+</body>
+</html>

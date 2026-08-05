@@ -1,0 +1,38 @@
+/*
+ * ============================================================
+ *  KIRANZA — COLOR TOKENS
+ *  Edit this file to retheme the entire site in one shot.
+ * ============================================================
+ */
+
+:root {
+  /* ── Backgrounds ─────────────────────────────────────────── */
+  --clr-bg:          #080808;   /* Page base — deepest black     */
+  --clr-surface:     #111111;   /* Card / panel background       */
+  --clr-surface-2:   #1a1a1a;   /* Elevated surface              */
+  --clr-surface-3:   #242424;   /* Hovered / active surface      */
+
+  /* ── Accents ─────────────────────────────────────────────── */
+  --clr-accent-1:        #e8ff3d;          /* Electric chartreuse — primary punch */
+  --clr-accent-2:        #ff5c00;          /* Burnt orange — secondary heat       */
+  --clr-accent-1-glow:   rgba(232,255,61,0.18);  /* Chartreuse glow / shadow      */
+  --clr-accent-2-glow:   rgba(255,92,0,0.18);    /* Orange glow / shadow          */
+  --clr-accent-1-dim:    rgba(232,255,61,0.08);  /* Very subtle chartreuse tint   */
+
+  /* ── Text ────────────────────────────────────────────────── */
+  --clr-text:        #f5f5f0;   /* Primary text                  */
+  --clr-text-muted:  #6a6a6a;   /* Secondary / caption text      */
+  --clr-text-faint:  #2e2e2e;   /* Dividers, very muted          */
+  --clr-text-invert: #080808;   /* Text on light/accent bg       */
+
+  /* ── Borders ─────────────────────────────────────────────── */
+  --clr-border:        #1e1e1e;   /* Subtle card border            */
+  --clr-border-bright: #2e2e2e;   /* Hover / focused border        */
+  --clr-border-accent: rgba(232,255,61,0.35); /* Accent border     */
+
+  /* ── Badges ─────────────────────────────────────────────────*/
+  --clr-badge-viral:   #e8ff3d;   /* Viral badge bg                */
+  --clr-badge-new:     #ff5c00;   /* New badge bg                  */
+  --clr-badge-limited: #ffffff;   /* Limited badge bg              */
+  --clr-badge-text:    #080808;   /* Badge text (all)              */
+}
