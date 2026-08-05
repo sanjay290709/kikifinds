@@ -1,5 +1,5 @@
 /* ============================================================
-   KIRANZA — UI ENHANCEMENTS JS
+   Kikifinds — UI ENHANCEMENTS JS
    Page Transitions · Scroll Progress · Announcement Bar ·
    Mobile Menu · Custom Cursor · Parallax · Lightbox ·
    Sticky Cart Bar · Toast System

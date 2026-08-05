@@ -1,5 +1,5 @@
 /* ============================================================
-   KIRANZA — PRODUCT DATA
+   Kikifinds — PRODUCT DATA
    16 products · 7 Gen Z aesthetics · sizes · REVIEWS
    ============================================================ */
 
@@ -48,7 +48,7 @@ const PRODUCTS = [
     id: 5, name: 'Heavyweight Drop-Shoulder Hoodie', category: 'Streetwear',
     price: 1299, originalPrice: 1599, badge: 'sale', badgeLabel: '→ Sale',
     image: 'assets/images/products/p5.jpg',
-    description: '400gsm fleece. Drop shoulder cut. Tonal embroidered Kiranza mark on the chest. The kind of hoodie that becomes your most-worn item within a week.',
+    description: '400gsm fleece. Drop shoulder cut. Tonal embroidered Kikifinds mark on the chest. The kind of hoodie that becomes your most-worn item within a week.',
     tags: ['hoodie', 'streetwear', 'oversized', 'fleece', 'heavyweight', 'embroidered'],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
   },

@@ -1,12 +1,12 @@
 /* ============================================================
-   KIRANZA — CART JS
+   Kikifinds — CART JS
    Cart drawer · Add / Remove / Qty · Badge · Totals
    ============================================================ */
 (function () {
   'use strict';
 
   /* ── Storage ─────────────────────────────────────────────── */
-  const KEY = 'kiranza_cart';
+  const KEY = 'Kikifinds_cart';
   function getCart()       { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } }
   function persist(cart)   { localStorage.setItem(KEY, JSON.stringify(cart)); updateBadge(); renderItems(); }
 

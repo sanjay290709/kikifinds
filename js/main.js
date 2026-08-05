@@ -1,5 +1,5 @@
 /* ============================================================
-   KIRANZA — MAIN JS
+   Kikifinds — MAIN JS
    Global interactivity, nav scroll, scroll reveal, wishlist,
    and dynamic homepage section rendering
    ============================================================ */
@@ -117,7 +117,7 @@
     });
 
     let wishlist = [];
-    try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
+    try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
 
     parent.querySelectorAll('.wishlist-btn').forEach(btn => {
       const pid = parseInt(btn.getAttribute('data-id'), 10);
@@ -130,7 +130,7 @@
         e.preventDefault();
         e.stopPropagation();
         let currentList = [];
-        try { currentList = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (err) {}
+        try { currentList = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (err) {}
 
         const index = currentList.indexOf(pid);
         if (index > -1) {
@@ -144,7 +144,7 @@
           btn.classList.add('active');
           if (typeof showToast !== 'undefined') showToast('Added to Wishlist!', 'success', '♥');
         }
-        localStorage.setItem('kiranza_wishlist', JSON.stringify(currentList));
+        localStorage.setItem('Kikifinds_wishlist', JSON.stringify(currentList));
         updateWishlistCount();
       });
     });
@@ -157,7 +157,7 @@
   /* ── 5. Wishlist Badge Counter ─────────────────────────────── */
   function updateWishlistCount() {
     let wishlist = [];
-    try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
+    try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
     document.querySelectorAll('.wishlist-badge').forEach(b => {
       b.style.display = wishlist.length ? 'flex' : 'none';
       b.textContent = wishlist.length > 9 ? '9+' : wishlist.length;

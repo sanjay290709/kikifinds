@@ -1,5 +1,5 @@
 /* ============================================================
-   KIRANZA — SEARCH JS
+   Kikifinds — SEARCH JS
    Full-screen live search overlay with highlighted results
    ============================================================ */
 (function () {

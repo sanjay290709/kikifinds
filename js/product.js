@@ -1,5 +1,5 @@
 /* ============================================================
-   KIRANZA — PRODUCT DETAIL JS
+   Kikifinds — PRODUCT DETAIL JS
    Dynamic rendering based on URL id param + sizes + reviews
    ============================================================ */
 (function () {
@@ -13,7 +13,7 @@
     const p = PRODUCTS.find(prod => prod.id === id) || PRODUCTS[0];
 
     // Page title & breadcrumb
-    document.title = `${p.name} — Kiranza`;
+    document.title = `${p.name} — Kikifinds`;
     const aesBread = document.getElementById('product-detail-aesthetic');
     if (aesBread) aesBread.textContent = p.category;
 
@@ -133,7 +133,7 @@
     const wishBtn = document.getElementById('detail-wishlist-btn');
     if (wishBtn) {
       let wishlist = [];
-      try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
+      try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
       const isWished = wishlist.includes(p.id);
 
       if (isWished) {
@@ -142,7 +142,7 @@
       }
 
       wishBtn.addEventListener('click', () => {
-        try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
+        try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
         const idx = wishlist.indexOf(p.id);
         if (idx > -1) {
           wishlist.splice(idx, 1);
@@ -155,7 +155,7 @@
           wishBtn.classList.add('active');
           if (typeof showToast !== 'undefined') showToast('Added to Wishlist!', 'success', '♥');
         }
-        localStorage.setItem('kiranza_wishlist', JSON.stringify(wishlist));
+        localStorage.setItem('Kikifinds_wishlist', JSON.stringify(wishlist));
         if (window.updateWishlistCount) window.updateWishlistCount();
       });
     }

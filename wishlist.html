@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wishlist — Kiranza</title>
-  <meta name="description" content="Your saved Gen Z aesthetic picks at Kiranza.">
+  <title>Wishlist — Kikifinds</title>
+  <meta name="description" content="Your saved Gen Z aesthetic picks at Kikifinds.">
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/main.css">
@@ -28,7 +28,7 @@
 
   <!-- Navbar -->
   <nav class="navbar scrolled" id="navbar">
-    <div class="nav-logo"><a href="index.html">KIRANZA</a></div>
+    <div class="nav-logo"><a href="index.html">Kikifinds</a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
@@ -101,7 +101,7 @@
   <div class="menu-overlay" id="menu-overlay"></div>
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
-      <span class="mobile-menu-logo">KIRANZA</span>
+      <span class="mobile-menu-logo">Kikifinds</span>
       <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
     </div>
     <div class="mobile-nav-links">
@@ -125,7 +125,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="footer-logo">KIRANZA</span>
+        <span class="footer-logo">Kikifinds</span>
         <p>Curated aesthetics for the culture. Every product, a vibe check.</p>
       </div>
       <div class="footer-col">
@@ -155,7 +155,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kiranza. Made with ✦ for the aesthetically obsessed.</p>
+      <p>© 2025 Kikifinds. Made with ✦ for the aesthetically obsessed.</p>
     </div>
   </footer>
 
@@ -171,7 +171,7 @@
 
       function renderWishlist() {
         let wishlist = [];
-        try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch(e) {}
+        try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch(e) {}
         const items = PRODUCTS.filter(p => wishlist.includes(p.id));
 
         if (!items.length) {
@@ -217,10 +217,10 @@
             e.preventDefault();
             const pid = +btn.dataset.id;
             let current = [];
-            try { current = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch(err) {}
+            try { current = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch(err) {}
             const idx = current.indexOf(pid);
             if (idx > -1) current.splice(idx, 1);
-            localStorage.setItem('kiranza_wishlist', JSON.stringify(current));
+            localStorage.setItem('Kikifinds_wishlist', JSON.stringify(current));
             if (window.updateWishlistCount) window.updateWishlistCount();
             if (typeof showToast !== 'undefined') showToast('Removed from Wishlist', 'info', '♡');
             renderWishlist();
