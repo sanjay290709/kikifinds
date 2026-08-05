@@ -678,8 +678,11 @@ body.page-ready { opacity: 1; }
 /*  ABOUT PAGE                                                */
 /* ══════════════════════════════════════════════════════════ */
 .about-hero {
-  min-height: 85vh; display: flex; align-items: flex-end;
-  padding: 0 80px 80px; position: relative; overflow: hidden;
+  min-height: 80vh; display: flex; align-items: center;
+  padding: calc(72px + 44px + 60px) 80px 80px; position: relative; overflow: hidden;
+}
+body.no-announcement .about-hero {
+  padding-top: calc(72px + 40px);
 }
 .about-bg-blob-1 {
   position: absolute; width: 700px; height: 700px;
@@ -696,11 +699,11 @@ body.page-ready { opacity: 1; }
 .about-hero-content { position: relative; z-index: 1; max-width: 820px; }
 .about-hero-content h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 7.5rem); font-weight: 900;
-  line-height: 0.98; letter-spacing: -0.04em; margin: 16px 0 30px;
+  font-size: clamp(2.4rem, 5.2vw, 4.5rem); font-weight: 900;
+  line-height: 1.05; letter-spacing: -0.03em; margin: 16px 0 24px;
 }
 .about-hero-content p {
-  font-size: 1.05rem; color: var(--clr-text-muted); max-width: 460px; line-height: 1.75;
+  font-size: 1.05rem; color: var(--clr-text-muted); max-width: 480px; line-height: 1.75;
 }
 
 .about-story {
