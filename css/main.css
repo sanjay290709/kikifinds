@@ -184,8 +184,9 @@ input, textarea { font-family: inherit; }
 /* ══════════════════════════════════════════════════════════ */
 .hero {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
   padding-top: 72px;

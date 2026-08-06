@@ -99,75 +99,189 @@
 .navbar { top: 44px; }
 body.no-announcement .navbar { top: 0; }
 
-.hero { padding-top: calc(72px + 44px); }
+.hero {
+  padding-top: calc(72px + 44px);
+  background: 
+    radial-gradient(circle at 75% 30%, rgba(200, 255, 0, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 20% 70%, rgba(255, 105, 180, 0.10) 0%, transparent 45%),
+    linear-gradient(135deg, rgba(8,8,8,0.85) 0%, rgba(12,12,16,0.92) 50%, rgba(8,8,8,0.88) 100%),
+    url('../assets/images/hero.jpg') center/cover no-repeat;
+  background-attachment: fixed;
+}
 body.no-announcement .hero { padding-top: 72px; }
 
 /* ── Hero inner two-column layout ─────────────────────────── */
 .hero-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 0.9fr;
   min-height: calc(100vh - 116px);
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
   align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 2;
 }
 .hero-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 60px 48px 60px 64px;
+  padding: 60px 32px 60px 64px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 .hero-visual {
   position: relative;
-  z-index: 1;
-  overflow: hidden;
+  z-index: 2;
   height: 100%;
-  min-height: 500px;
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
-.hero-img-frame {
+
+/* ── Hero Multi-Image Collage Grid ────────────────────────── */
+.hero-collage {
+  position: relative;
   width: 100%;
-  height: 100%;
-  min-height: 500px;
-  overflow: hidden;
-  border-radius: 0 0 0 40px;
+  max-width: 520px;
+  height: 480px;
 }
-.hero-img-frame img {
+.collage-card {
+  position: absolute;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+  background: var(--clr-surface-2);
+}
+.collage-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transition: transform 8s ease;
   display: block;
 }
-.hero-visual:hover .hero-img-frame img { transform: scale(1.04); }
+
+.card-main {
+  width: 80%;
+  height: 85%;
+  top: 5%;
+  left: 5%;
+  z-index: 2;
+  transform: rotate(-2deg);
+}
+.card-main:hover {
+  transform: rotate(0deg) scale(1.02);
+  z-index: 4;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.8), 0 0 25px rgba(200, 255, 0, 0.2);
+}
+.card-main .collage-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(8,8,8,0.75);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: var(--clr-accent-1);
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-top {
+  width: 45%;
+  height: 45%;
+  top: 0%;
+  right: 0%;
+  z-index: 3;
+  transform: rotate(6deg);
+}
+.card-top:hover {
+  transform: rotate(2deg) scale(1.05);
+  z-index: 5;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(255, 105, 180, 0.3);
+}
+
+.card-bottom {
+  width: 48%;
+  height: 42%;
+  bottom: 0%;
+  right: 5%;
+  z-index: 3;
+  transform: rotate(-4deg);
+}
+.card-bottom:hover {
+  transform: rotate(0deg) scale(1.05);
+  z-index: 5;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0, 220, 255, 0.3);
+}
+
+.mini-tag {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background: rgba(8,8,8,0.8);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+}
 
 /* Floating aesthetic tags on hero */
 .floating-tag {
   position: absolute;
-  background: var(--clr-surface);
-  border: 1px solid var(--clr-border-bright);
+  background: rgba(18, 18, 22, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 100px;
   padding: 8px 16px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.05em;
+  color: #fff;
   display: flex;
   align-items: center;
   gap: 6px;
   white-space: nowrap;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  animation: floatY 3s ease-in-out infinite;
-  z-index: 3;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  animation: floatY 3.5s ease-in-out infinite;
+  z-index: 6;
 }
-.tag-y2k   { bottom: 28%; left: -20px; animation-delay: 0s; }
-.tag-da    { top: 25%; right: 20px; animation-delay: -2s; }
-.tag-coquette { bottom: 12%; right: 10%; animation-delay: -4s; }
+.tag-y2k   { bottom: 15%; left: -25px; animation-delay: 0s; }
+.tag-da    { top: 12%; right: -10px; animation-delay: -1.8s; }
+.tag-coquette { bottom: 8%; right: -15px; animation-delay: -3.2s; }
 
-/* ── Collections grid layout ──────────────────────────────── */
+/* ── Section Background Enhancements (Replacing plain black) ─ */
+.new-in-section {
+  position: relative;
+  background: 
+    linear-gradient(180deg, rgba(8,8,8,0.92) 0%, rgba(15,15,20,0.85) 50%, rgba(8,8,8,0.95) 100%),
+    url('../assets/images/cat-streetwear.jpg') center/cover no-repeat;
+}
+
+.video-section {
+  position: relative;
+  background: 
+    linear-gradient(180deg, rgba(8,8,8,0.90) 0%, rgba(12,12,16,0.85) 50%, rgba(8,8,8,0.92) 100%),
+    url('../assets/images/cat-y2k.jpg') center/cover no-repeat;
+}
+
+.page-hero {
+  background: 
+    linear-gradient(180deg, rgba(8,8,8,0.75) 0%, rgba(8,8,8,0.95) 100%),
+    url('../assets/images/cat-dark-academia.jpg') center/cover no-repeat !important;
+}
 .col-grid {
   display: grid;
   grid-template-columns: 1.5fr 1fr 1fr;
