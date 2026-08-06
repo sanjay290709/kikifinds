@@ -14,9 +14,12 @@
       const link = e.target.closest('a[href]');
       if (!link) return;
       const href = link.getAttribute('href');
-      if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
-          href.startsWith('tel:') || link.target === '_blank' ||
-          (href.startsWith('http') && !href.includes(location.hostname))) return;
+
+      if (!href || href === '#' || href.trim() === '' || href.startsWith('#') ||
+          href.startsWith('javascript:') || href.startsWith('mailto:') ||
+          href.startsWith('tel:') || link.hasAttribute('onclick') ||
+          link.target === '_blank' || (href.startsWith('http') && !href.includes(location.hostname))) return;
+
       e.preventDefault();
       document.body.classList.remove('page-ready');
       setTimeout(() => { window.location.href = href; }, 360);
@@ -96,7 +99,6 @@
     document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; });
     document.addEventListener('mouseenter', () => { dot.style.opacity='1'; ring.style.opacity='0.45'; });
 
-    // expose for dynamic elements
     window._cursorHover = hover;
   }
 
@@ -165,7 +167,6 @@
     setTimeout(() => { t.classList.remove('show'); setTimeout(() => t.remove(), 400); }, 3000);
   };
 
-  /* ── Populate sticky product info from DOM ───────────────── */
   function populateStickyBar() {
     const name  = document.getElementById('product-detail-name')?.textContent;
     const price = document.getElementById('product-detail-price')?.textContent;
@@ -176,7 +177,6 @@
     if (stickyImg && img) stickyImg.src = img;
   }
 
-  /* ── Init all ────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     initPageTransitions();
     initScrollProgress();

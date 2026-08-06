@@ -42,7 +42,6 @@
   window.setCurrency = setCurrency;
 
   function updateAllPricesOnPage() {
-    // Update raw price attributes if available, or refresh product grids
     document.querySelectorAll('[data-price-inr]').forEach(el => {
       const inr = parseFloat(el.getAttribute('data-price-inr'));
       if (!isNaN(inr)) {
@@ -50,11 +49,8 @@
       }
     });
 
-    // Re-render cart totals if cart drawer is open/present
     if (window.renderCartItems) window.renderCartItems();
     if (window.renderWishlist) window.renderWishlist();
-
-    // Trigger collections grid re-render if function exists
     if (window.refreshCollectionsGrid) window.refreshCollectionsGrid();
   }
 
@@ -140,9 +136,8 @@
     `;
 
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => modal.classList.add('open'));
+    modal.classList.add('open');
 
-    // Bind size buttons
     modal.querySelectorAll('.size-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         modal.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
@@ -152,7 +147,6 @@
       });
     });
 
-    // Close handlers
     const close = () => {
       modal.classList.remove('open');
       document.body.style.overflow = '';
@@ -160,7 +154,6 @@
     modal.querySelector('#quickview-close').addEventListener('click', close);
     modal.querySelector('#quickview-overlay').addEventListener('click', close);
 
-    // Add to cart
     modal.querySelector('#qv-add-btn').addEventListener('click', () => {
       if (window.addToCart) window.addToCart(p.id, 1);
       close();
@@ -212,7 +205,6 @@
       document.body.appendChild(modal);
     }
 
-    // Calculate subtotal
     let subtotal = 0;
     cart.forEach(item => {
       const p = PRODUCTS.find(p => p.id === item.id);
@@ -310,7 +302,7 @@
     `;
 
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => modal.classList.add('open'));
+    modal.classList.add('open');
 
     const close = () => {
       modal.classList.remove('open');
@@ -319,7 +311,6 @@
     modal.querySelector('#checkout-close').addEventListener('click', close);
     modal.querySelector('#checkout-overlay').addEventListener('click', close);
 
-    // Form submit -> Confetti + Order Success
     modal.querySelector('#checkout-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const orderId = 'KIKI-' + Math.floor(100000 + Math.random() * 900000);
@@ -359,7 +350,7 @@
     `;
 
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => modal.classList.add('open'));
+    modal.classList.add('open');
     triggerConfetti(modal.querySelector('#confetti-container'));
   }
 
@@ -455,7 +446,7 @@
     `;
 
     document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => modal.classList.add('open'));
+    modal.classList.add('open');
 
     const close = () => {
       modal.classList.remove('open');
@@ -489,8 +480,38 @@
   };
 
   /* ══════════════════════════════════════════════════════════ */
-  /*  7. VIBE QUIZ MODAL                                        */
+  /*  7. VIBE QUIZ MODAL (Interactive 3-Step Flow)              */
   /* ══════════════════════════════════════════════════════════ */
+  const QUIZ_QUESTIONS = [
+    {
+      q: "1. What's your ideal Friday night?",
+      options: [
+        { text: "💿 Flashy dance floor & Y2K glitz", cat: "Y2K" },
+        { text: "📚 Rain outside, candle & vintage journal", cat: "Dark Academia" },
+        { text: "🎀 Ribbon crafting & tea party with friends", cat: "Coquette" },
+        { text: "🧢 Late night urban skate & street food", cat: "Streetwear" }
+      ]
+    },
+    {
+      q: "2. Pick your go-to beverage:",
+      options: [
+        { text: "⚡ Energy drink in a metallic tin", cat: "Y2K" },
+        { text: "☕ Double shot espresso in a ceramic demitasse", cat: "Dark Academia" },
+        { text: "🍵 Iced matcha latte with oat milk", cat: "Clean Girl" },
+        { text: "🌿 Herbal wildflower brew", cat: "Cottagecore" }
+      ]
+    },
+    {
+      q: "3. Choose your main character accessory:",
+      options: [
+        { text: "🦋 Holographic butterfly clips", cat: "Y2K" },
+        { text: "👓 Tortoiseshell round glasses", cat: "Dark Academia" },
+        { text: "🎀 Blush satin bow headband", cat: "Coquette" },
+        { text: "📌 Thrifted cassette pin badge set", cat: "Indie/Alt" }
+      ]
+    }
+  ];
+
   window.openVibeQuiz = function () {
     let modal = document.getElementById('quiz-modal');
     if (!modal) {
@@ -500,61 +521,103 @@
       document.body.appendChild(modal);
     }
 
-    modal.innerHTML = `
-      <div class="checkout-overlay" id="quiz-overlay"></div>
-      <div class="quiz-dialog">
-        <button class="quiz-close" id="quiz-close">✕</button>
-        <div id="quiz-body">
-          <span class="section-tag">Aesthetic Matcher</span>
-          <h2 style="font-family:'Playfair Display',serif;font-size:2rem;margin:12px 0 20px;">Find Your Vibe ✦</h2>
-          <div class="quiz-question" id="quiz-q1">
-            <p class="quiz-q-title">1. What's your ideal Friday night?</p>
-            <div class="quiz-options">
-              <button class="quiz-opt" data-cat="Y2K">💿 Flashy club & Y2K dance floor</button>
-              <button class="quiz-opt" data-cat="Dark Academia">📚 Rain outside, coffee & leather journal</button>
-              <button class="quiz-opt" data-cat="Coquette">🎀 Candlelit tea party with bows</button>
-              <button class="quiz-opt" data-cat="Streetwear">🧢 Late night urban skate & street food</button>
+    let currentStep = 0;
+    const scores = { 'Y2K': 0, 'Dark Academia': 0, 'Coquette': 0, 'Streetwear': 0, 'Clean Girl': 0, 'Cottagecore': 0, 'Indie/Alt': 0 };
+
+    const renderStep = () => {
+      const qData = QUIZ_QUESTIONS[currentStep];
+      modal.innerHTML = `
+        <div class="checkout-overlay" id="quiz-overlay"></div>
+        <div class="quiz-dialog">
+          <button class="quiz-close" id="quiz-close">✕</button>
+          <div id="quiz-body">
+            <span class="section-tag">Aesthetic Matcher (Step ${currentStep + 1} of 3)</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin:12px 0 20px;">Find Your Vibe ✦</h2>
+            <div class="quiz-question">
+              <p class="quiz-q-title" style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;margin-bottom:14px;">${qData.q}</p>
+              <div class="quiz-options">
+                ${qData.options.map(opt => `
+                  <button type="button" class="quiz-opt" data-cat="${opt.cat}">${opt.text}</button>
+                `).join('')}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
 
-    document.body.style.overflow = 'hidden';
-    requestAnimationFrame(() => modal.classList.add('open'));
+      modal.querySelector('#quiz-close').addEventListener('click', close);
+      modal.querySelector('#quiz-overlay').addEventListener('click', close);
+
+      modal.querySelectorAll('.quiz-opt').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const cat = btn.dataset.cat;
+          if (cat) scores[cat] = (scores[cat] || 0) + 1;
+
+          currentStep++;
+          if (currentStep < QUIZ_QUESTIONS.length) {
+            renderStep();
+          } else {
+            renderResult();
+          }
+        });
+      });
+    };
+
+    const renderResult = () => {
+      // Find category with highest score
+      let topCat = 'Y2K';
+      let max = -1;
+      Object.keys(scores).forEach(c => {
+        if (scores[c] > max) {
+          max = scores[c];
+          topCat = c;
+        }
+      });
+
+      const recs = (typeof PRODUCTS !== 'undefined') ? PRODUCTS.filter(p => p.category === topCat).slice(0, 3) : [];
+
+      const qBody = modal.querySelector('#quiz-body');
+      qBody.innerHTML = `
+        <div class="quiz-result reveal-scale" style="text-align:center;">
+          <span class="section-tag">Match Confirmed!</span>
+          <h2 style="font-family:'Playfair Display',serif;font-size:2.4rem;margin:12px 0;color:var(--clr-accent-1);">${topCat}</h2>
+          <p style="color:var(--clr-text-muted);margin-bottom:24px;font-size:0.92rem;">Your choices match 88% authentic <strong>${topCat}</strong> aesthetic. Here are your top recommended picks:</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;text-align:left;">
+            ${recs.map(p => `
+              <div style="background:var(--clr-surface-2);border-radius:10px;padding:12px;border:1px solid var(--clr-border);">
+                <img src="${p.image}" alt="${p.name}" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;margin-bottom:8px;">
+                <div style="font-size:0.75rem;font-weight:700;line-height:1.2;margin-bottom:4px;">${p.name}</div>
+                <div style="font-size:0.8rem;color:var(--clr-accent-1);font-family:'Space Grotesk',sans-serif;font-weight:700;">${window.formatPrice(p.price)}</div>
+                <button class="btn btn-primary btn-sm" onclick="addToCart(${p.id});document.getElementById('quiz-modal').classList.remove('open');document.body.style.overflow=''" style="width:100%;margin-top:8px;padding:6px;font-size:0.7rem;">Add to Cart</button>
+              </div>
+            `).join('')}
+          </div>
+          <div style="display:flex;gap:12px;justify-content:center;">
+            <a href="collections.html?filter=${encodeURIComponent(topCat)}" class="btn btn-primary" onclick="close()">Explore ${topCat} Collection →</a>
+            <button class="btn btn-outline" onclick="openVibeQuiz()">Retake Quiz 🔄</button>
+          </div>
+        </div>
+      `;
+    };
 
     const close = () => {
       modal.classList.remove('open');
       document.body.style.overflow = '';
     };
-    modal.querySelector('#quiz-close').addEventListener('click', close);
-    modal.querySelector('#quiz-overlay').addEventListener('click', close);
 
-    modal.querySelectorAll('.quiz-opt').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const cat = opt.dataset.cat;
-        const qBody = modal.querySelector('#quiz-body');
-        qBody.innerHTML = `
-          <div class="quiz-result reveal-scale" style="text-align:center;">
-            <span class="section-tag">Match Found!</span>
-            <h2 style="font-family:'Playfair Display',serif;font-size:2.4rem;margin:16px 0;color:var(--clr-accent-1);">${cat}</h2>
-            <p style="color:var(--clr-text-muted);margin-bottom:28px;">You radiate 85% authentic ${cat} energy. Here are your curated picks!</p>
-            <a href="collections.html?filter=${encodeURIComponent(cat)}" class="btn btn-primary btn-lg" onclick="document.getElementById('quiz-modal').classList.remove('open');document.body.style.overflow=''">Shop My Vibe →</a>
-          </div>
-        `;
-      });
-    });
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('open');
+    renderStep();
   };
 
   /* ══════════════════════════════════════════════════════════ */
   /*  INIT ON DOM LOAD                                          */
   /* ══════════════════════════════════════════════════════════ */
   document.addEventListener('DOMContentLoaded', () => {
-    // Restore saved theme
     const savedTheme = localStorage.getItem('kikifinds_theme') || 'chartreuse';
     applyTheme(savedTheme);
 
-    // Render recently viewed if product detail page
     const params = new URLSearchParams(window.location.search);
     const pid = parseInt(params.get('id'), 10);
     if (pid && !isNaN(pid)) {
