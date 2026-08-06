@@ -1,13 +1,12 @@
 /* ============================================================
-   Kikifinds — MAIN JS
-   Global interactivity, nav scroll, scroll reveal, wishlist,
-   and dynamic homepage section rendering
+   KIKIFINDS — MAIN JS
+   Navbar scroll, scroll reveal, wishlist, dynamic homepage sections,
+   TikTok / Reels video section, and currency selector binding
    ============================================================ */
 
 (function () {
   'use strict';
 
-  /* ── 1. Navbar Scroll Effect ───────────────────────────────── */
   function initNavbar() {
     const navbar = document.getElementById('navbar');
     if (!navbar) return;
@@ -24,7 +23,6 @@
     onScroll();
   }
 
-  /* ── 2. Scroll Reveal Animations ───────────────────────────── */
   function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
     if (!reveals.length) return;
@@ -43,70 +41,76 @@
     reveals.forEach(el => observer.observe(el));
   }
 
-  /* ── 3. Render Homepage Trending Grid ──────────────────────── */
   function renderTrending() {
     const scrollContainer = document.getElementById('trending-scroll');
     if (!scrollContainer || typeof PRODUCTS === 'undefined') return;
 
     const trendingProducts = PRODUCTS.filter(p => p.badge === 'hot' || p.badge === 'new' || p.badge === 'sale').slice(0, 8);
 
-    scrollContainer.innerHTML = trendingProducts.map(item => `
+    scrollContainer.innerHTML = trendingProducts.map(item => {
+      const formattedPrice = window.formatPrice ? window.formatPrice(item.price) : `₹${item.price.toLocaleString('en-IN')}`;
+      const formattedOrig = item.originalPrice ? (window.formatPrice ? window.formatPrice(item.originalPrice) : `₹${item.originalPrice.toLocaleString('en-IN')}`) : '';
+      return `
       <div class="product-card">
         <a href="product.html?id=${item.id}">
           <div class="product-card-img">
             <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='assets/images/placeholder.jpg'">
             ${item.badge ? `<span class="product-badge badge-${item.badge}">${item.badgeLabel}</span>` : ''}
             <button class="wishlist-btn" data-id="${item.id}" aria-label="Wishlist">♡</button>
+            <button class="quickview-card-btn" data-qv-id="${item.id}">Quick View 👁️</button>
           </div>
         </a>
         <div class="product-card-body">
           <span class="product-aesthetic-tag">${item.category}</span>
           <a href="product.html?id=${item.id}"><h3 class="product-title">${item.name}</h3></a>
           <div class="product-footer">
-            <div class="product-price">
-              ₹${item.price.toLocaleString('en-IN')}
-              ${item.originalPrice ? `<span class="original-price">₹${item.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+            <div class="product-price" data-price-inr="${item.price}">
+              ${formattedPrice}
+              ${item.originalPrice ? `<span class="original-price">${formattedOrig}</span>` : ''}
             </div>
             <button class="btn-add-cart" data-id="${item.id}">Add +</button>
           </div>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
 
     bindProductCardEvents(scrollContainer);
   }
 
-  /* ── 4. Render Homepage New In Strip ───────────────────────── */
   function renderNewIn() {
     const container = document.getElementById('new-in-grid');
     if (!container || typeof PRODUCTS === 'undefined') return;
 
     const newInProducts = PRODUCTS.filter(p => p.badge === 'new').slice(0, 4);
 
-    container.innerHTML = newInProducts.map(item => `
+    container.innerHTML = newInProducts.map(item => {
+      const formattedPrice = window.formatPrice ? window.formatPrice(item.price) : `₹${item.price.toLocaleString('en-IN')}`;
+      return `
       <div class="product-card">
         <a href="product.html?id=${item.id}">
           <div class="product-card-img">
             <img src="${item.image}" alt="${item.name}" loading="lazy" onerror="this.src='assets/images/placeholder.jpg'">
             <span class="product-badge badge-new">✦ New</span>
             <button class="wishlist-btn" data-id="${item.id}" aria-label="Wishlist">♡</button>
+            <button class="quickview-card-btn" data-qv-id="${item.id}">Quick View 👁️</button>
           </div>
         </a>
         <div class="product-card-body">
           <span class="product-aesthetic-tag">${item.category}</span>
           <a href="product.html?id=${item.id}"><h3 class="product-title">${item.name}</h3></a>
           <div class="product-footer">
-            <div class="product-price">₹${item.price.toLocaleString('en-IN')}</div>
+            <div class="product-price" data-price-inr="${item.price}">${formattedPrice}</div>
             <button class="btn-add-cart" data-id="${item.id}">Add +</button>
           </div>
         </div>
       </div>
-    `).join('');
+    `;
+    }).join('');
 
     bindProductCardEvents(container);
   }
 
-  /* ── Bind product card interactions (Cart + Wishlist) ───────── */
   function bindProductCardEvents(parent) {
     parent.querySelectorAll('.btn-add-cart').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -116,8 +120,17 @@
       });
     });
 
+    parent.querySelectorAll('.quickview-card-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const qid = parseInt(btn.getAttribute('data-qv-id'), 10);
+        if (window.openQuickView) window.openQuickView(qid);
+      });
+    });
+
     let wishlist = [];
-    try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
+    try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
 
     parent.querySelectorAll('.wishlist-btn').forEach(btn => {
       const pid = parseInt(btn.getAttribute('data-id'), 10);
@@ -130,7 +143,7 @@
         e.preventDefault();
         e.stopPropagation();
         let currentList = [];
-        try { currentList = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (err) {}
+        try { currentList = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (err) {}
 
         const index = currentList.indexOf(pid);
         if (index > -1) {
@@ -144,20 +157,19 @@
           btn.classList.add('active');
           if (typeof showToast !== 'undefined') showToast('Added to Wishlist!', 'success', '♥');
         }
-        localStorage.setItem('Kikifinds_wishlist', JSON.stringify(currentList));
+        localStorage.setItem('kiranza_wishlist', JSON.stringify(currentList));
         updateWishlistCount();
       });
     });
 
     if (window._cursorHover) {
-      parent.querySelectorAll('.product-card, .wishlist-btn, .btn-add-cart').forEach(window._cursorHover);
+      parent.querySelectorAll('.product-card, .wishlist-btn, .btn-add-cart, .quickview-card-btn').forEach(window._cursorHover);
     }
   }
 
-  /* ── 5. Wishlist Badge Counter ─────────────────────────────── */
   function updateWishlistCount() {
     let wishlist = [];
-    try { wishlist = JSON.parse(localStorage.getItem('Kikifinds_wishlist') || '[]'); } catch (e) {}
+    try { wishlist = JSON.parse(localStorage.getItem('kiranza_wishlist') || '[]'); } catch (e) {}
     document.querySelectorAll('.wishlist-badge').forEach(b => {
       b.style.display = wishlist.length ? 'flex' : 'none';
       b.textContent = wishlist.length > 9 ? '9+' : wishlist.length;
@@ -165,7 +177,6 @@
   }
   window.updateWishlistCount = updateWishlistCount;
 
-  /* ── 6. Newsletter Subscription Form ──────────────────────── */
   function initNewsletter() {
     const form = document.getElementById('newsletter-form');
     if (!form) return;
@@ -188,13 +199,23 @@
     });
   }
 
-  /* ── Init Everything ───────────────────────────────────────── */
+  function initCurrencySelect() {
+    const sel = document.getElementById('currency-select');
+    if (!sel) return;
+    const saved = localStorage.getItem('kikifinds_currency') || 'INR';
+    sel.value = saved;
+    sel.addEventListener('change', () => {
+      if (window.setCurrency) window.setCurrency(sel.value);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initNavbar();
     initScrollReveal();
     renderTrending();
     renderNewIn();
     initNewsletter();
+    initCurrencySelect();
     updateWishlistCount();
   });
 

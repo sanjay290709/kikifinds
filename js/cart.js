@@ -1,16 +1,14 @@
 /* ============================================================
-   Kikifinds — CART JS
-   Cart drawer · Add / Remove / Qty · Badge · Totals
+   KIKIFINDS — CART JS
+   Cart drawer · Add / Remove / Qty · Badge · Coupons · Checkout
    ============================================================ */
 (function () {
   'use strict';
 
-  /* ── Storage ─────────────────────────────────────────────── */
-  const KEY = 'Kikifinds_cart';
+  const KEY = 'kiranza_cart';
   function getCart()       { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch { return []; } }
   function persist(cart)   { localStorage.setItem(KEY, JSON.stringify(cart)); updateBadge(); renderItems(); }
 
-  /* ── Mutations ───────────────────────────────────────────── */
   window.addToCart = function (id, qty = 1) {
     if (typeof PRODUCTS === 'undefined') return;
     const p = PRODUCTS.find(p => p.id === id);
@@ -28,6 +26,7 @@
     persist(getCart().filter(i => i.id !== id));
     if (typeof showToast !== 'undefined') showToast('Item removed', 'info', '✕');
   }
+
   function changeQty(id, delta) {
     const cart = getCart();
     const item = cart.find(i => i.id === id);
@@ -36,7 +35,6 @@
     persist(cart);
   }
 
-  /* ── Badge ───────────────────────────────────────────────── */
   function updateBadge() {
     const total = getCart().reduce((s, i) => s + i.qty, 0);
     document.querySelectorAll('.cart-badge').forEach(b => {
@@ -45,7 +43,6 @@
     });
   }
 
-  /* ── Drawer open/close ───────────────────────────────────── */
   function openCartDrawer() {
     renderItems();
     document.getElementById('cart-drawer')?.classList.add('open');
@@ -60,7 +57,6 @@
   window.openCartDrawer  = openCartDrawer;
   window.closeCartDrawer = closeCartDrawer;
 
-  /* ── Render items ────────────────────────────────────────── */
   function renderItems() {
     const body  = document.getElementById('cart-items');
     const total = document.getElementById('cart-total');
@@ -73,7 +69,7 @@
 
     if (!cart.length) {
       body.innerHTML = `<div class="cart-empty-state"><div class="icon">🛒</div><p>Your cart is empty.<br>Add something vibe-worthy!</p></div>`;
-      if (total) total.textContent = '₹0';
+      if (total) total.textContent = window.formatPrice ? window.formatPrice(0) : '₹0';
       return;
     }
 
@@ -82,13 +78,14 @@
       const p = PRODUCTS.find(p => p.id === item.id);
       if (!p) return '';
       sub += p.price * item.qty;
+      const formattedPrice = window.formatPrice ? window.formatPrice(p.price * item.qty) : `₹${(p.price*item.qty).toLocaleString('en-IN')}`;
       return `
       <div class="cart-item">
         <div class="cart-item-img"><img src="${p.image}" alt="${p.name}" onerror="this.src='assets/images/placeholder.jpg'"></div>
         <div>
           <div class="cart-item-cat">${p.category}</div>
           <div class="cart-item-name">${p.name}</div>
-          <div class="cart-item-price">₹${(p.price*item.qty).toLocaleString('en-IN')}</div>
+          <div class="cart-item-price">${formattedPrice}</div>
         </div>
         <div class="cart-item-actions">
           <div class="cart-qty">
@@ -101,15 +98,24 @@
       </div>`;
     }).join('');
 
-    if (total) total.textContent = `₹${sub.toLocaleString('en-IN')}`;
+    // Calculate discount if coupon applied
+    let discount = 0;
+    if (window.appliedCoupon && window.appliedCoupon.discountPct) {
+      discount = (sub * window.appliedCoupon.discountPct) / 100;
+    }
+
+    const finalSub = Math.max(0, sub - discount);
+    if (total) {
+      total.textContent = window.formatPrice ? window.formatPrice(finalSub) : `₹${finalSub.toLocaleString('en-IN')}`;
+    }
 
     body.querySelectorAll('.cart-qty-btn').forEach(b =>
       b.addEventListener('click', () => changeQty(+b.dataset.id, +b.dataset.d)));
     body.querySelectorAll('.cart-remove').forEach(b =>
       b.addEventListener('click', () => removeItem(+b.dataset.id)));
   }
+  window.renderCartItems = renderItems;
 
-  /* ── Init ────────────────────────────────────────────────── */
   document.addEventListener('DOMContentLoaded', () => {
     updateBadge();
 
@@ -117,18 +123,20 @@
     document.getElementById('cart-overlay')?.addEventListener('click', closeCartDrawer);
     document.getElementById('cart-drawer-close')?.addEventListener('click', closeCartDrawer);
 
-    // Product detail page add to cart
-    const detailBtn = document.getElementById('detail-cart-btn');
-    if (detailBtn) {
-      detailBtn.addEventListener('click', () => {
-        const id = +new URLSearchParams(location.search).get('id');
-        const qty = +( document.getElementById('qty-val')?.textContent || 1 );
-        if (id) addToCart(id, qty);
-      });
-    }
+    // Coupon bind
+    document.getElementById('cart-coupon-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const input = document.getElementById('cart-coupon-input');
+      if (input && window.applyCouponCode) {
+        window.applyCouponCode(input.value);
+      }
+    });
 
+    // Checkout bind
     document.getElementById('cart-checkout-btn')?.addEventListener('click', () => {
-      if (typeof showToast !== 'undefined') showToast('Checkout coming soon! 🚀', 'info');
+      if (window.openCheckoutModal) {
+        window.openCheckoutModal();
+      }
     });
   });
 

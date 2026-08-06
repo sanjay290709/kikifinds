@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Kikifinds</title>
-  <meta name="description" content="The story, mission, and aesthetic values behind Kikifinds.">
+  <title>About — kikifinds</title>
+  <meta name="description" content="The story, mission, and aesthetic values behind kikifinds.">
   <link rel="stylesheet" href="css/colors.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/main.css">
@@ -15,12 +15,21 @@
 
   <div class="scroll-progress" id="scroll-progress"></div>
 
+  <!-- Theme Switcher Widget -->
+  <div class="theme-switcher">
+    <span class="theme-label">Theme</span>
+    <button class="theme-btn t-chartreuse active" data-theme="chartreuse" onclick="applyTheme('chartreuse')" title="Electric Chartreuse"></button>
+    <button class="theme-btn t-coquette" data-theme="coquette" onclick="applyTheme('coquette')" title="Coquette Blush"></button>
+    <button class="theme-btn t-amber" data-theme="amber" onclick="applyTheme('amber')" title="Dark Academia Amber"></button>
+    <button class="theme-btn t-vaporwave" data-theme="vaporwave" onclick="applyTheme('vaporwave')" title="Y2K Vaporwave"></button>
+  </div>
+
   <!-- Announcement Bar -->
   <div class="announcement-bar" id="announcement-bar">
     <div class="announcement-track">
       <span class="announcement-item">FREE SHIPPING ON ORDERS OVER ₹999<span class="announcement-sep">✦</span></span>
       <span class="announcement-item">NEW DROPS EVERY FRIDAY<span class="announcement-sep">✦</span></span>
-      <span class="announcement-item">USE CODE 'GENZ' FOR 10% OFF<span class="announcement-sep">✦</span></span>
+      <span class="announcement-item">USE CODE 'GENZ10' FOR 10% OFF<span class="announcement-sep">✦</span></span>
       <span class="announcement-item">FREE SHIPPING ON ORDERS OVER ₹999<span class="announcement-sep">✦</span></span>
     </div>
     <button class="announcement-close" id="announcement-close" aria-label="Close">✕</button>
@@ -28,14 +37,21 @@
 
   <!-- Navbar -->
   <nav class="navbar scrolled" id="navbar">
-    <div class="nav-logo"><a href="index.html">Kikifinds</a></div>
+    <div class="nav-logo"><a href="index.html">KIKIFINDS</a></div>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="collections.html">Collections</a></li>
       <li><a href="lookbook.html">Lookbook</a></li>
       <li><a href="about.html" class="active">About</a></li>
+      <li><a href="#" onclick="openVibeQuiz();return false;" style="color:var(--clr-accent-1);font-weight:700;">Quiz ✦</a></li>
     </ul>
     <div class="nav-actions">
+      <select class="currency-select" id="currency-select" aria-label="Currency">
+        <option value="INR">₹ INR</option>
+        <option value="USD">$ USD</option>
+        <option value="EUR">€ EUR</option>
+        <option value="GBP">£ GBP</option>
+      </select>
       <button class="nav-icon-btn" id="search-btn" aria-label="Search">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       </button>
@@ -60,7 +76,7 @@
     <div class="about-hero-content reveal">
       <span class="section-tag">Our Story</span>
       <h1>Curated for the <span class="accent-text">Aesthetically</span> Obsessed.</h1>
-      <p>Kikifinds was built on a simple premise: style shouldn't be generic. Every piece we curate passes a strict vibe check.</p>
+      <p>kikifinds was built on a simple premise: style shouldn't be generic. Every piece we curate passes a strict vibe check.</p>
     </div>
   </section>
 
@@ -81,13 +97,13 @@
   <!-- Story Section -->
   <section class="about-story">
     <div class="about-story-img reveal-scale">
-      <img src="assets/images/hero.jpg" alt="Kikifinds Aesthetic">
+      <img src="assets/images/hero.jpg" alt="kikifinds Aesthetic">
     </div>
     <div class="about-story-text reveal">
       <span class="section-tag">Why We Exist</span>
       <h2>A Lifestyle Mix <span class="accent-text">Un-categorized</span></h2>
       <p>We don't believe in sticking to one aesthetic forever. On Monday you might be full Dark Academia with a leather journal and espresso; on Friday you're Y2K iridescent butterfly clips and platform kicks.</p>
-      <p>Kikifinds is your moodboard brought to real life — lifestyle accessories, fashion, homeware, and stationery chosen strictly for their aesthetic output.</p>
+      <p>kikifinds is your moodboard brought to real life — lifestyle accessories, fashion, homeware, and stationery chosen strictly for their aesthetic output.</p>
     </div>
   </section>
 
@@ -174,6 +190,10 @@
     </div>
     <div class="cart-drawer-body" id="cart-items"></div>
     <div class="cart-drawer-footer">
+      <form class="cart-coupon-wrap" id="cart-coupon-form">
+        <input type="text" class="cart-coupon-input" id="cart-coupon-input" placeholder="Promo code (GENZ10)">
+        <button type="submit" class="cart-coupon-btn">Apply</button>
+      </form>
       <div class="cart-subtotal">
         <span class="cart-subtotal-label">Subtotal</span>
         <span class="cart-total-amount" id="cart-total">₹0</span>
@@ -187,7 +207,7 @@
   <div class="menu-overlay" id="menu-overlay"></div>
   <div class="mobile-menu" id="mobile-menu">
     <div class="mobile-menu-header">
-      <span class="mobile-menu-logo">Kikifinds</span>
+      <span class="mobile-menu-logo">KIKIFINDS</span>
       <button class="mobile-menu-close" id="mobile-menu-close">✕</button>
     </div>
     <div class="mobile-nav-links">
@@ -196,6 +216,8 @@
       <a href="lookbook.html" class="mobile-nav-link">Lookbook</a>
       <a href="wishlist.html" class="mobile-nav-link">Wishlist</a>
       <a href="about.html" class="mobile-nav-link active">About</a>
+      <a href="#" onclick="openVibeQuiz();return false;" class="mobile-nav-link" style="color:var(--clr-accent-1)">Find Your Vibe ✦</a>
+      <a href="#" onclick="openTrackModal();return false;" class="mobile-nav-link">Track Order 📦</a>
     </div>
     <div class="mobile-menu-footer">
       <span class="mobile-footer-label">Follow the vibe</span>
@@ -211,7 +233,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <span class="footer-logo">Kikifinds</span>
+        <span class="footer-logo">KIKIFINDS</span>
         <p>Curated aesthetics for the culture. Every product, a vibe check.</p>
       </div>
       <div class="footer-col">
@@ -224,11 +246,11 @@
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Info</h4>
+        <h4>Info & Help</h4>
         <ul>
           <li><a href="about.html">About</a></li>
-          <li><a href="#">Shipping</a></li>
-          <li><a href="#">Returns</a></li>
+          <li><a href="#" onclick="openTrackModal();return false;">Track My Order 📦</a></li>
+          <li><a href="#" onclick="openVibeQuiz();return false;">Aesthetic Quiz ✦</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -241,11 +263,12 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Kikifinds. Made with ✦ for the aesthetically obsessed.</p>
+      <p>© 2025 kikifinds. Made with ✦ for the aesthetically obsessed.</p>
     </div>
   </footer>
 
   <script src="data/products.js"></script>
+  <script src="js/features.js"></script>
   <script src="js/main.js"></script>
   <script src="js/ui.js"></script>
   <script src="js/cart.js"></script>
