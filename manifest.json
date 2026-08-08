@@ -1,0 +1,23 @@
+{
+  "name": "kikifinds Mobile App",
+  "short_name": "kikifinds",
+  "description": "Lifestyle Mix & Gen Z Aesthetics Mobile App — Y2K, Coquette, Dark Academia, Streetwear, Clean Girl, Indie Alt & Cottagecore.",
+  "start_url": "./app.html",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/images/hero.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "assets/images/hero.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["shopping", "lifestyle", "fashion"]
+}

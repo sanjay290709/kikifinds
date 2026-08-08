@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>kikifinds — Mobile App</title>
+  <meta name="description" content="kikifinds Gen Z Aesthetics Mobile App — Y2K, Coquette, Dark Academia, Streetwear, Clean Girl, Indie Alt & Cottagecore drops.">
+  <meta name="theme-color" content="#080808">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="assets/images/hero.jpg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/enhancements.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app-mode">
+
+  <!-- Mobile App Frame Container -->
+  <div class="app-container">
+
+    <!-- ── APP HEADER ──────────────────────────────────────── -->
+    <header class="app-header">
+      <div class="app-brand">
+        <a href="#" onclick="switchTab('home'); return false;" class="app-brand-logo">
+          KIKIFINDS <span class="app-brand-badge">APP</span>
+        </a>
+      </div>
+      <div class="app-header-actions">
+        <!-- Theme Buttons -->
+        <div class="theme-switcher" style="position:static; margin:0; padding:0; background:none; border:none;">
+          <button class="theme-btn t-chartreuse active" onclick="applyAppTheme('chartreuse')" title="Chartreuse"></button>
+          <button class="theme-btn t-coquette" onclick="applyAppTheme('coquette')" title="Coquette"></button>
+          <button class="theme-btn t-amber" onclick="applyAppTheme('amber')" title="Amber"></button>
+          <button class="theme-btn t-vaporwave" onclick="applyAppTheme('vaporwave')" title="Vaporwave"></button>
+        </div>
+
+        <button class="app-icon-btn" onclick="switchTab('shop')" aria-label="Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+
+        <button class="app-icon-btn" onclick="openCartSheet()" aria-label="Cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <span class="app-badge" id="app-cart-badge" style="display:none">0</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── PROMO BANNER BAR ────────────────────────────────── -->
+    <div class="app-promo-bar">
+      <span>✦ USE CODE 'GENZ10' FOR 10% OFF</span>
+      <select class="app-currency-select" id="app-currency-select" aria-label="Currency">
+        <option value="INR">₹ INR</option>
+        <option value="USD">$ USD</option>
+        <option value="EUR">€ EUR</option>
+        <option value="GBP">£ GBP</option>
+      </select>
+    </div>
+
+    <!-- ── TAB SCREEN 1: HOME ──────────────────────────────── -->
+    <main class="app-screen active" id="screen-home">
+      <!-- Hero Drop Card -->
+      <div class="app-hero-card">
+        <img src="assets/images/hero.jpg" alt="Kikifinds Editorial Drop 2025">
+        <div class="app-hero-overlay">
+          <span class="app-hero-tag">Editorial Drop 2025</span>
+          <h1 class="app-hero-title">Curated Aesthetics Un-Filtered</h1>
+          <button class="app-hero-btn" onclick="switchTab('shop')">Shop Drops ✦</button>
+        </div>
+      </div>
+
+      <!-- Horizontal Stories Reel -->
+      <div class="stories-horizontal">
+        <div class="section-label">
+          <span>Lookbook Stories</span>
+          <a href="#" onclick="openStory(0); return false;">View All ✦</a>
+        </div>
+        <div class="stories-track">
+          <div class="story-item" onclick="openStory(0)">
+            <div class="story-ring">
+              <div class="story-img-box"><img src="assets/images/cat-coquette.jpg" alt="Coquette"></div>
+            </div>
+            <span>Coquette</span>
+          </div>
+          <div class="story-item" onclick="openStory(1)">
+            <div class="story-ring">
+              <div class="story-img-box"><img src="assets/images/hero.jpg" alt="Y2K"></div>
+            </div>
+            <span>Y2K Vibe</span>
+          </div>
+          <div class="story-item" onclick="openStory(2)">
+            <div class="story-ring">
+              <div class="story-img-box"><img src="assets/images/cat-dark-academia.jpg" alt="Academia"></div>
+            </div>
+            <span>Academia</span>
+          </div>
+          <div class="story-item" onclick="openStory(3)">
+            <div class="story-ring">
+              <div class="story-img-box"><img src="assets/images/cat-streetwear.jpg" alt="Streetwear"></div>
+            </div>
+            <span>Streetwear</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Vibe Pill Filters -->
+      <div class="section-label">
+        <span>Explore Aesthetics</span>
+      </div>
+      <div class="aesthetic-pills">
+        <button class="pill-btn active" onclick="switchTab('shop')">All Vibes</button>
+        <button class="pill-btn" onclick="switchTab('shop')">💿 Y2K</button>
+        <button class="pill-btn" onclick="switchTab('shop')">🎀 Coquette</button>
+        <button class="pill-btn" onclick="switchTab('shop')">📚 Academia</button>
+        <button class="pill-btn" onclick="switchTab('shop')">🧢 Streetwear</button>
+        <button class="pill-btn" onclick="switchTab('shop')">✨ Clean Girl</button>
+        <button class="pill-btn" onclick="switchTab('shop')">🌿 Cottagecore</button>
+      </div>
+
+      <!-- Trending Drops Grid -->
+      <div class="section-label" style="margin-top:12px;">
+        <span>Trending Now 🔥</span>
+        <a href="#" onclick="switchTab('shop'); return false;">See All</a>
+      </div>
+      <div class="products-grid" id="home-featured-products">
+        <!-- Injected dynamically by js/app.js -->
+      </div>
+    </main>
+
+    <!-- ── TAB SCREEN 2: SHOP / CATALOG ────────────────────── -->
+    <section class="app-screen" id="screen-shop">
+      <div class="shop-controls">
+        <div class="app-search-box">
+          <svg class="app-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="app-search-input" class="app-search-input" placeholder="Search Y2K, pins, bows, journals...">
+        </div>
+        <div class="aesthetic-pills" id="shop-aesthetic-pills">
+          <button class="pill-btn active" data-cat="ALL">All Aesthetics</button>
+          <button class="pill-btn" data-cat="Y2K">💿 Y2K</button>
+          <button class="pill-btn" data-cat="Coquette">🎀 Coquette</button>
+          <button class="pill-btn" data-cat="Dark Academia">📚 Academia</button>
+          <button class="pill-btn" data-cat="Streetwear">🧢 Streetwear</button>
+          <button class="pill-btn" data-cat="Clean Girl">✨ Clean Girl</button>
+          <button class="pill-btn" data-cat="Indie/Alt">📌 Indie/Alt</button>
+          <button class="pill-btn" data-cat="Cottagecore">🌿 Cottagecore</button>
+        </div>
+        <div class="shop-sort-row">
+          <span>Catalog Items</span>
+          <select id="app-sort-select" class="shop-select" aria-label="Sort">
+            <option value="default">Sort by: Featured</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="products-grid" id="shop-products-grid">
+        <!-- Injected dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- ── TAB SCREEN 3: VIBE QUIZ ─────────────────────────── -->
+    <section class="app-screen" id="screen-quiz">
+      <div class="quiz-card">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+        <div id="quiz-step-container">
+          <!-- Quiz steps injected dynamically by js/app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TAB SCREEN 4: WISHLIST ──────────────────────────── -->
+    <section class="app-screen" id="screen-wishlist">
+      <div class="section-label">
+        <span>Saved Items 💖</span>
+      </div>
+      <div class="products-grid" id="wishlist-products-grid">
+        <!-- Injected dynamically by js/app.js -->
+      </div>
+    </section>
+
+    <!-- ── BOTTOM GLASS NAVIGATION BAR ────────────────────── -->
+    <nav class="app-tab-bar">
+      <button class="app-tab-item active" data-tab="home">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span>Home</span>
+      </button>
+
+      <button class="app-tab-item" data-tab="shop">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect width="20" height="14" x="2" y="5" rx="2"/><line x1="2" x2="22" y1="10" y2="10"/></svg>
+        <span>Shop</span>
+      </button>
+
+      <button class="app-tab-item" data-tab="quiz">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Vibe Quiz</span>
+      </button>
+
+      <button class="app-tab-item" data-tab="wishlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span>Wishlist</span>
+        <span class="app-badge" id="app-wishlist-badge" style="display:none; top:2px; right:12px;">0</span>
+      </button>
+    </nav>
+
+    <!-- ── SLIDE-UP CART DRAWER & CHECKOUT ────────────────── -->
+    <div class="cart-sheet-overlay" id="cart-sheet-overlay" onclick="closeCartSheet(); closeProductDetail();"></div>
+    
+    <div class="cart-sheet" id="cart-sheet">
+      <div class="sheet-handle" onclick="closeCartSheet()"></div>
+      <div class="sheet-header">
+        <span class="sheet-title">Your Cart 🛒</span>
+        <button onclick="closeCartSheet()" style="font-size:1.2rem; color:var(--clr-text-muted);">✕</button>
+      </div>
+
+      <div class="cart-items-scroll" id="cart-items-scroll">
+        <!-- Injected dynamically -->
+      </div>
+
+      <div class="cart-summary-box">
+        <div class="cart-promo-row">
+          <input type="text" id="cart-promo-input" class="cart-promo-input" placeholder="Promo code (e.g. GENZ10)">
+          <button class="cart-promo-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <div class="cart-total-row">
+          <span>Total:</span>
+          <span id="cart-total-amount" style="color:var(--clr-accent-1); font-size:1.1rem;">₹0</span>
+        </div>
+        <button class="checkout-btn" onclick="triggerCheckout()">Proceed to Checkout ✦</button>
+      </div>
+    </div>
+
+    <!-- ── SLIDE-UP PRODUCT DETAIL MODAL SHEET ────────────── -->
+    <div class="product-detail-sheet" id="product-detail-sheet">
+      <!-- Injected dynamically -->
+    </div>
+
+    <!-- ── FULLSCREEN STORY MODAL ──────────────────────────── -->
+    <div class="story-fullscreen-modal" id="story-modal">
+      <!-- Injected dynamically -->
+    </div>
+
+  </div>
+
+  <!-- Data & Logic Scripts -->
+  <script src="data/products.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
